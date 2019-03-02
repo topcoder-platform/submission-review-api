@@ -1,0 +1,682 @@
+{
+	"info": {
+		"_postman_id": "49b83b10-168a-4878-821f-c3080fb29892",
+		"name": "submission-review-app-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "challenge submissions",
+			"item": [
+				{
+					"name": "get challenge submissions MM challenge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46ab87c1-c536-46f2-9b6d-3cac357e36d7",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"SUBMISSION_ID\", jsonData[0].submissions[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions?challengeId=30054625",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions"
+							],
+							"query": [
+								{
+									"key": "challengeId",
+									"value": "30054625"
+								}
+							]
+						},
+						"description": "reviews data is not support for Code challenge right now"
+					},
+					"response": []
+				},
+				{
+					"name": "get challenge submissions Code challenge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca6c3ad2-b402-4123-b66a-6c088df9246c",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"var jsonData = pm.response.json();",
+									"pm.environment.set(\"SUBMISSION_ID\", jsonData[0].submissions[0].id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{mess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions?challengeId=30054674",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions"
+							],
+							"query": [
+								{
+									"key": "challengeId",
+									"value": "30054674"
+								}
+							]
+						},
+						"description": "reviews data is not support for Code challenge right now"
+					},
+					"response": []
+				},
+				{
+					"name": "get challenge submissions  not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "156addfd-8e11-48c6-963e-6dcf9d72161a",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions?challengeId=12345",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions"
+							],
+							"query": [
+								{
+									"key": "challengeId",
+									"value": "12345"
+								}
+							]
+						},
+						"description": "reviews data is not support for Code challenge right now"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "submission reviews",
+			"item": [
+				{
+					"name": "get submission reviews Code challenge",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"reviews"
+							]
+						},
+						"description": "reviews data is not support for Code challenge right now"
+					},
+					"response": []
+				},
+				{
+					"name": "get submission reviews MM challenge",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get submission reviews not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92fe5382-38e4-412c-955a-a1c4c901fc1d",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/12345/reviews",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"12345",
+								"reviews"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "download submission",
+			"item": [
+				{
+					"name": "download submission by tc admin",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{mess_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "download submission by manager",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{tonyj_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "download submission by co-pilot",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{hohosky_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "download submission by reviewer",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{Ghostar_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "download own submission by user lars2520",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{lars2520_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "download other's submission by user lars2520",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{lars2520_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "failure - download other's submission by user AdminBrett",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d13ac792-841a-4477-9430-c7dc76459d6a",
+								"exec": [
+									"pm.test(\"Status code is 403\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{AdminBrett_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"download"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "failure - challenge doesn't exist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "15c9786e-b499-4341-a9b7-80d3fea3a3ea",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{mess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/123456/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"123456",
+								"download"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

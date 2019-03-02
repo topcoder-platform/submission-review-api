@@ -1,0 +1,361 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: ap-submission-review
+  description: >
+    Services that are used to fetch challenge submissions and submission review
+    details.
+
+    ## Access level notes:
+
+    - If a user is admin/copilot/observer, all data should be returned.
+
+    - If the user is submitter and the review phase is not closed yet, the API
+    should **ONLY** return the user's submission(s) without any associated
+    scores. Submissions from other members should be filtered out.
+
+    - If the user is submitter and the review phase is closed but appeals
+    response phase is not closed, the API should **only** return the user's
+    submission(s) including associated scores.
+
+    - If the user is submitter and the appeals response phase is closed, return
+    all data.
+
+
+    ## The following APIs will be used to fetch and aggregate information:
+
+    - Multiple endpoints from the V5 Submission API
+    (https://tc-submission-api-dev.herokuapp.com/docs)
+
+    - `/v3/users?filter=id={{userId}}` - to fetch user information -
+    `/v4/challenges/{{challengeId}}/resources` - to fetch challenge resources
+host: api.topcoder.com
+basePath: /v5
+schemes:
+  - http
+  - https
+securityDefinitions:
+  bearer:
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  '/challengeSubmissions':
+    get:
+      description: >
+        Retrieve a summary of submissions for the given challenge.
+
+        **Authorization:** This endpoint is accessible by roles user, admin and
+        copilot
+      security:
+        - bearer: []
+      produces:
+        - application/json
+      parameters:
+        - name: challengeId
+          in: query
+          required: true
+          type: string
+          description: The challenge id to get the submission data.
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ChallengeSubmitter'
+        '400':
+          description: Bad request.  Request parameters were invalid.
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '401':
+          description: >
+            Unauthorized.  The requester does not have the correct permission to
+            access the challenge (or did not authenticate properly)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Challenge Id not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  '/challengeSubmissions/:submissionId/reviews':
+    get:
+      description: Get the reviews associated with the submission
+      security:
+        - bearer: []
+      produces:
+        - application/json
+      parameters:
+        - name: submissionId
+          in: path
+          required: true
+          type: string
+          description: The submission id to get the review data.
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/SubmissionReview'
+        '400':
+          description: Bad request.  Request parameters were invalid.
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '401':
+          description: >
+            Unauthorized.  The requester does not have the correct permission to
+            access the challenge (or did not authenticate properly)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Challenge Id not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+  '/challengeSubmissions/:submissionId/download':
+    get:
+      description: >
+        Download the submission.
+
+        **A user should be able to download a submission only in the following
+        cases**:
+
+        - The user is admin/copilot/observer.
+
+        - The user is trying to download his/her submission(s).
+
+        - The user is trying to download submissions from other and have
+        recieved a passing score (80+) in his/her submission.
+      security:
+        - bearer: []
+      produces:
+        - application/octet-stream
+      parameters:
+        - name: submissionId
+          in: path
+          required: true
+          type: string
+          description: The submission id.
+      responses:
+        '200':
+          description: Submission Downloaded successfully
+          schema:
+            type: file
+        '401':
+          description: >
+            Unauthorized.  The requester does not have the correct permission to
+            access the challenge (or did not authenticate properly)
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '404':
+          description: Challenge Id not found
+          schema:
+            $ref: '#/definitions/ErrorModel'
+        '500':
+          description: Server error
+          schema:
+            $ref: '#/definitions/ErrorModel'
+definitions:
+  SubmissionReview:
+    description: The submission entity.
+    type: object
+    required:
+      - id
+      - type
+      - url
+      - memberId
+      - challengeId
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            readOnly: true
+            description:  The submission id.
+            example: a12a4180-65aa-42ec-a945-5fd21def1567'
+          review:
+            type: array
+            items:
+              $ref: "#/definitions/Review"
+          reviewSummation:
+            $ref: "#/definitions/ReviewSummation"
+      - $ref: "#/definitions/PartiallySubmission"
+      - $ref: "#/definitions/Auditable"
+
+  PartiallySubmission:
+    description: The submission entity fields that can be partially updated.
+    type: object
+    properties:
+      type:
+        type: string
+        description:  The submission type.
+        example: 'ContestSubmission'
+      url:
+        type: string
+        description:  The submission url.
+        example: 'http://content.topcoder.com/some/path'
+      memberId:
+        type: integer
+        description:  The submission member id.
+        example: 'a84a4180-65aa-42ec-a945-5fd21dec1567'
+      challengeId:
+        type: integer
+        description:  The submission challenge id.
+        example: 'a12bc180-65aa-42ec-a945-5fd21dec1567'
+  Review:
+    description: The review entity.
+    type: object
+    required:
+      - id
+      - score
+      - typeId
+      - reviewerId
+      - scoreCardId
+      - submissionId
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            readOnly: true
+            description: The review id.
+            example: 'a12bd180-65aa-42ec-a945-5fd21dec1567'
+      - $ref: "#/definitions/PartiallyReview"
+      - $ref: "#/definitions/Auditable"
+  PartiallyReview:
+    description: The review entity fields that can be partially updated.
+    type: object
+    properties:
+      score:
+        type: number
+        format: double
+        description: The review score.
+        example: 95.5
+      typeId:
+        type: string
+        description: The review type id.
+        example: 'a12bc180-65ab-42ec-a945-5fd21dec1567'
+      reviewType:
+        type: string
+        description: The review type name.
+        example: 'Review'
+      reviewerId:
+        type: string
+        example: 'a12bc280-65ab-42ec-a945-5fd21dec1567'
+        description: The review reviewer id.
+      reviewer:
+        type: string
+        example: TC System
+        description: The reviewer handle
+      scoreCardId:
+        type: string
+        description: The review score card id.
+        example: 'a12bd180-65ab-42ec-a945-5fd21dec1567'
+      submissionId:
+        type: string
+        description: The submission id.
+        example: 'a12bc180-65ab-42ec-a945-5fd2dec1567'
+      metadata:
+        type: object
+        description: Review Metadata in JSON format
+  ChallengeSubmitter:
+    type: object
+    properties:
+      memberId:
+        type: string
+      memberHandle:
+        type: string
+      submissions:
+        type: array
+        items:
+          $ref: '#/definitions/ChallengeSubmission'
+  ChallengeSubmission:
+    type: object
+    properties:
+      id:
+        type: string
+      legacySubmissionId:
+        type: number
+        example: 200053
+      created:
+        type: string
+        format: date-time
+        readOnly: true
+        example: '2018-05-20T07:00:30.123Z'
+      reviewSummation:
+        $ref: '#/definitions/ReviewSummation'
+  ReviewSummation:
+    description: The review summation entity.
+    type: object
+    required:
+      - id
+      - submissionId
+      - aggregateScore
+      - scoreCardId
+      - isPassing
+    allOf:
+      - type: object
+        properties:
+          id:
+            type: string
+            readOnly: true
+            description: The review summation id.
+            example: 'a12bc180-65aa-42ec-a945-7ad21dec1567'
+      - $ref: "#/definitions/PartiallyReviewSummation"
+      - $ref: "#/definitions/Auditable"
+  PartiallyReviewSummation:
+    description: The review summation entity fields that can be partially updated.
+    type: object
+    properties:
+      submissionId:
+        type: string
+        description: The review summation submission id.
+        example: 'a12bc180-43aa-42ec-a945-5fd21dec1567'
+      aggregateScore:
+        type: number
+        format: double
+        description: The review summation aggregate score.
+        example: 97.8
+      scoreCardId:
+        type: string
+        description: The review summation score card id.
+        example: 'a12bc180-65aa-42aa-a945-5fd21dec1567'
+      isPassing:
+        type: boolean
+        description: The review summation passing boolean flag.
+        example: true
+      metadata:
+        type: object
+        description: Review summation metadata in JSON format
+  Auditable:
+    description: The entity used as mark to add audit fields.
+    type: object
+    readOnly: true
+    properties:
+      created:
+        type: string
+        format: date-time
+        readOnly: true
+        example: '2018-05-20T07:00:30.123Z'
+      updated:
+        type: string
+        format: date-time
+        readOnly: true
+        example: '2018-06-01T07:36:28.178Z'
+      createdBy:
+        type: string
+        readOnly: true
+      updatedBy:
+        type: string
+        readOnly: true
+  ErrorModel:
+    type: object
+    properties:
+      message:
+        type: string
