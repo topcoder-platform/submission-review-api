@@ -66,7 +66,7 @@ async function getChallengeSubmissions (currentUser, challengeId) {
         results[submission.memberId] = {
           ...(challenge.appealResponseEnded || hasFullAccess ? {
             ..._.pick(submission, [
-              'memberId',
+              'memberId'
             ]),
             memberHandle: _.get(resources[submission.memberId], 'memberHandle')
           } : {}),
@@ -115,6 +115,7 @@ async function getSubmissionReviews (currentUser, submissionId) {
       ...review,
       reviewType: _.get(_.find(reviewTypes, type => type.id === review.typeId), 'name')
     }))
+    submission.reviewSummation = _.get(submission, 'reviewSummation[0]')
   } catch (e) {
     throw new errors.NotFoundError(`Could not load submission.\n Details: ${_.get(e, 'message')}`)
   }
