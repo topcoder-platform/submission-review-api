@@ -74,6 +74,7 @@ async function getChallengeSubmissions (currentUser, challengeId) {
         }
       }
 
+      submission.reviewSummation = _.get(submission, 'reviewSummation[0]')
       results[submission.memberId].submissions.push({
         ..._.pick(submission, [
           'id',
