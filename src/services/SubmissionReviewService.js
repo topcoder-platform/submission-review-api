@@ -14,7 +14,7 @@ const {
   getAccess
 } = require('../common/helper')
 const errors = require('../common/errors')
-const { UserRoles } = require('../../app-constants')
+const { UserRoles, SystemReviewers } = require('../../app-constants')
 
 /**
  * Get challenge submissions
@@ -121,11 +121,6 @@ async function getSubmissionReviews (currentUser, submissionId) {
   }
   try {
     submission = _.get(await makeRequest('GET', `${config.SUBMISSION_API_URL}/${submissionId}`), 'body')
-    submission.review = _.map(submission.review || [], (review) => ({
-      ...review,
-      reviewType: _.get(_.find(reviewTypes, type => type.id === review.typeId), 'name')
-    }))
-    submission.reviewSummation = _.get(submission, 'reviewSummation[0]')
   } catch (e) {
     throw new errors.NotFoundError(`Could not load submission.\n Details: ${_.get(e, 'message')}`)
   }
@@ -142,6 +137,14 @@ async function getSubmissionReviews (currentUser, submissionId) {
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
+
+  submission.review = _.map(submission.review || [], (review) => ({
+    ...review,
+    reviewType: _.get(_.find(reviewTypes, type => type.id === review.typeId), 'name'),
+    reviewer: _.get(resources[review.reviewerId], 'memberHandle', SystemReviewers.Default)
+  }))
+  submission.reviewSummation = _.get(submission, 'reviewSummation[0]')
+
   // Access flags
   const { hasFullAccess, isReviewer, isSubmitter } = getAccess(currentUser, resources)
   if (hasFullAccess) return submission
