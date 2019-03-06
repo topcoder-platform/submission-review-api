@@ -139,7 +139,11 @@ const getChallengeDetail = async (challengeId) => {
   ret.isF2F = content.subTrack !== undefined && content.subTrack.endsWith('FIRST_2_FINISH')
   if (ret.isF2F) {
     // F2F has multiple iterative-review phases, no appeal/appeal-response phase
-    ret.isReviewPhase = phases['Iterative Review'][phases['Iterative Review'].length - 1].actualEndTime === undefined
+    if (_.isArray(phases['Iterative Review'])) {
+      ret.isReviewPhase = phases['Iterative Review'][phases['Iterative Review'].length - 1].actualEndTime === undefined
+    } else {
+      ret.isReviewPhase = phases['Iterative Review'].actualEndTime === undefined
+    }
     if (content.winners) {
       ret.winF2F = content.winners[0].submitter
     }

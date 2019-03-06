@@ -48,7 +48,16 @@ async function getChallengeSubmissions (currentUser, challengeId) {
   }
   // Access flags
   const { isSubmitter, hasFullAccess } = getAccess(currentUser, resources)
-  submissions.sort((a, b) => (new Date(b.created).getTime()) - (new Date(a.created).getTime()))
+  const scorePath = 'review[0].score'
+
+  submissions.sort((a, b) => {
+    if (challenge.isF2F && (_.get(b, scorePath) || _.get(b, scorePath))) {
+      if (_.get(b, scorePath, 0) !== _.get(a, scorePath, 0)) {
+        return _.get(b, scorePath, 0) - _.get(a, scorePath, 0)
+      }
+    }
+    return (new Date(b.created).getTime()) - (new Date(a.created).getTime())
+  })
 
   const results = {}
   _.each(submissions, (submission) => {
