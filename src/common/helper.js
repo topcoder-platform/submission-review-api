@@ -49,7 +49,7 @@ const autoWrapExpress = (obj) => {
  * @param {Array} resources the challenge resources
  */
 const getAccess = (authUser, resources) => {
-  const hasFullAccess = authUser.roles.indexOf(UserRoles.Admin) > -1 || _.intersection(_.get(resources[authUser.userId], 'roles', []), [
+  const hasFullAccess = authUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) > -1 || _.intersection(_.get(resources[authUser.userId], 'roles', []), [
     ProjectRoles.Manager,
     ProjectRoles.Copilot,
     ProjectRoles.Observer
