@@ -34,24 +34,28 @@ async function getChallengeSubmissions (currentUser, challengeId) {
   }
   try {
     resources = await getChallengeResources(challengeId)
-    if (!resources[currentUser.userId] && currentUser.roles.indexOf(UserRoles.Admin) === -1) {
-      throw new errors.ForbiddenError(`You don't have access to this challenge!`)
-    }
   } catch (e) {
     logger.error(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
     resources = {}
   }
+
+  // User access check
+  if (!resources[currentUser.userId] && currentUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) === -1) {
+    throw new errors.ForbiddenError(`You don't have access to this challenge!`)
+  }
+
   try {
     submissions = await fetchPaginated(`${config.SUBMISSION_API_URL}?challengeId=${challengeId}&type=${config.SUBMISSION_TYPE}`)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge submissions.\n Details: ${_.get(e, 'message')}`)
   }
+
   // Access flags
-  const { isSubmitter, hasFullAccess } = getAccess(currentUser, resources)
+  const { isSubmitter, isReviewer, hasFullAccess } = getAccess(currentUser, resources)
   const scorePath = 'review[0].score'
 
   submissions.sort((a, b) => {
-    if (challenge.isF2F && (_.get(b, scorePath) || _.get(b, scorePath))) {
+    if (challenge.isF2F && (_.get(a, scorePath) || _.get(b, scorePath))) {
       if (_.get(b, scorePath, 0) !== _.get(a, scorePath, 0)) {
         return _.get(b, scorePath, 0) - _.get(a, scorePath, 0)
       }
@@ -68,6 +72,11 @@ async function getChallengeSubmissions (currentUser, challengeId) {
       if (!challenge.appealResponseEnded) {
         inlcudeSubmission = false
       }
+    }
+
+    // Reviewer doesn't have access to submissions during submission phase except F2F
+    if (isReviewer && challenge.isSubmitPhase && !challenge.isF2F) {
+      inlcudeSubmission = false
     }
 
     if (inlcudeSubmission === true) {
@@ -98,7 +107,7 @@ async function getChallengeSubmissions (currentUser, challengeId) {
 }
 
 getChallengeSubmissions.schema = {
-  currentUser: Joi.any(),
+  currentUser: Joi.any().required(),
   challengeId: Joi.id() // defined in app-bootstrap
 }
 
@@ -131,11 +140,13 @@ async function getSubmissionReviews (currentUser, submissionId) {
   }
   try {
     resources = await getChallengeResources(submission.challengeId)
-    if (!resources[currentUser.userId] && currentUser.roles.indexOf(UserRoles.Admin) === -1) {
-      throw new errors.ForbiddenError(`You don't have access to this challenge!`)
-    }
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
+  }
+
+  // User access check
+  if (!resources[currentUser.userId] && currentUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) === -1) {
+    throw new errors.ForbiddenError(`You don't have access to this challenge!`)
   }
 
   submission.review = _.map(submission.review || [], (review) => ({
@@ -147,29 +158,40 @@ async function getSubmissionReviews (currentUser, submissionId) {
 
   // Access flags
   const { hasFullAccess, isReviewer, isSubmitter } = getAccess(currentUser, resources)
+
   if (hasFullAccess) return submission
+
   if (isSubmitter) {
-    if (challenge.isAppealsPhase || challenge.appealEnded || challenge.appealResponseEnded) {
+    // If Appeals Response is Closed, Reviews can be viewed for all members
+    if (challenge.appealResponseEnded) {
       return submission
     }
+    // Before Appeals Response Closure, Submitter is not allowed to access other reviews
+    if (submission.memberId.toString() !== currentUser.userId.toString()) {
+      throw new errors.ForbiddenError('You cannot view other member reviews before Appeals Response closure')
+    }
+    // Allow access to review of own submission
+    if (challenge.isAppealsPhase || challenge.appealEnded) {
+      return submission
+    }
+    // Return own submission details without Review
     return _.pick(submission, ['legacySubmissionId', 'id', 'created'])
   }
+
   if (isReviewer) {
     if (challenge.appealResponseEnded) {
       return submission
     }
-    if (!challenge.isReviewPhase) {
-      return {
-        ..._.pick(submission, ['legacySubmissionId', 'id', 'created']),
-        review: _.filter(submission.review, r => r.reviewerId.toString() === currentUser.userId.toString())
-      }
+    // Own reviews can be accessed during Review phase too
+    return {
+      ..._.pick(submission, ['legacySubmissionId', 'id', 'created']),
+      review: _.filter(submission.review, r => r.reviewerId.toString() === currentUser.userId.toString())
     }
   }
-  throw new errors.ForbiddenError('You are not allowed to view this submissios')
 }
 
 getSubmissionReviews.schema = {
-  currentUser: Joi.any(),
+  currentUser: Joi.any().required(),
   submissionId: Joi.id() // defined in app-bootstrap
 }
 
@@ -197,31 +219,38 @@ async function getDownloadUrl (currentUser, submissionId) {
   }
   try {
     resources = await getChallengeResources(submission.challengeId)
-    if (!resources[currentUser.userId] && currentUser.roles.indexOf(UserRoles.Admin) === -1) {
-      throw new errors.ForbiddenError(`You don't have access to this challenge!`)
-    }
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
+
+  // User access check
+  if (!resources[currentUser.userId] && currentUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) === -1) {
+    throw new errors.ForbiddenError(`You don't have access to this challenge!`)
+  }
+
   // Access flags
   const { hasFullAccess, isReviewer, isSubmitter } = getAccess(currentUser, resources)
+
   const url = `${config.SUBMISSION_API_URL}/${submissionId}/download`
+
   if (hasFullAccess) return url
+
   if (isSubmitter) {
     if (challenge.appealResponseEnded || submission.memberId.toString() === currentUser.userId.toString()) {
       return url
     }
   }
+
   if (isReviewer) {
     if (!challenge.isSubmitPhase) {
       return url
     }
   }
-  throw new errors.ForbiddenError('You are not allowed to download this submissios')
+  throw new errors.ForbiddenError('You are not allowed to download this submission')
 }
 
 getDownloadUrl.schema = {
-  currentUser: Joi.any(),
+  currentUser: Joi.any().required(),
   submissionId: Joi.id() // defined in app-bootstrap
 }
 
