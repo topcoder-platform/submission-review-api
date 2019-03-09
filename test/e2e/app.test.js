@@ -36,6 +36,7 @@ const { invalidChallengeId,
   copilotToken,
   reviewerToken,
   reviewer,
+  clientManagerToken,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
@@ -155,6 +156,15 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions?challengeId=${submissionPhaseChallengeId}`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.body.should.be.an('array')
+        response.body.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions?challengeId=${submissionPhaseChallengeId}`)
@@ -240,6 +250,15 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions?challengeId=${reviewPhaseChallengeId}`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.body.should.be.an('array')
+        response.body.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions?challengeId=${reviewPhaseChallengeId}`)
@@ -317,6 +336,15 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions?challengeId=${appealsPhaseChallengeId}`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.body.should.be.an('array')
+        response.body.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions?challengeId=${appealsPhaseChallengeId}`)
@@ -389,6 +417,15 @@ describe('Submission Review API tests', () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions?challengeId=${completedChallengeId}`)
           .set('Authorization', `Bearer ${copilotToken}`)
+        response.body.should.be.an('array')
+        response.body.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions?challengeId=${completedChallengeId}`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
         response.body.should.be.an('array')
         response.body.length.should.be.eql(2)
         errorLogs.should.be.empty
@@ -520,6 +557,16 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all reviews during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[1].id}/reviews`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        const reviews = response.body.review
+        reviews.length.should.be.eql(0)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any reviews', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/reviews`)
@@ -592,6 +639,16 @@ describe('Submission Review API tests', () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/reviews`)
           .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        const reviews = response.body.review
+        reviews.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all reviews during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/reviews`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
         const reviews = response.body.review
         reviews.length.should.be.eql(2)
@@ -671,6 +728,16 @@ describe('Submission Review API tests', () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/reviews`)
           .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        const reviews = response.body.review
+        reviews.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all reviews after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/reviews`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
         const reviews = response.body.review
         reviews.length.should.be.eql(2)
@@ -800,6 +867,15 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/download`)
@@ -866,6 +942,15 @@ describe('Submission Review API tests', () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/download`)
           .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
         response.text.should.be.eql('download')
         errorLogs.should.be.empty
@@ -942,6 +1027,15 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/download`)
@@ -1008,6 +1102,15 @@ describe('Submission Review API tests', () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/download`)
           .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
         response.text.should.be.eql('download')
         errorLogs.should.be.empty

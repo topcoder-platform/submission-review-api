@@ -31,6 +31,7 @@ const { invalidChallengeId,
   manager,
   copilot,
   reviewer,
+  clientManager,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
@@ -114,6 +115,12 @@ describe('Submission Review Service tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        const submissions = await service.getChallengeSubmissions(clientManager, submissionPhaseChallengeId)
+        submissions.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         await service.getChallengeSubmissions(nonSubmitter, submissionPhaseChallengeId).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
@@ -168,6 +175,12 @@ describe('Submission Review Service tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during review phase', async () => {
+        const submissions = await service.getChallengeSubmissions(clientManager, reviewPhaseChallengeId)
+        submissions.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         await service.getChallengeSubmissions(nonSubmitter, reviewPhaseChallengeId).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
@@ -217,6 +230,12 @@ describe('Submission Review Service tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        const submissions = await service.getChallengeSubmissions(clientManager, appealsPhaseChallengeId)
+        submissions.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any submission', async () => {
         await service.getChallengeSubmissions(nonSubmitter, appealsPhaseChallengeId).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
@@ -262,6 +281,12 @@ describe('Submission Review Service tests', () => {
 
       it('Copilot have access to all submissions after appeals response closure', async () => {
         const submissions = await service.getChallengeSubmissions(copilot, completedChallengeId)
+        submissions.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        const submissions = await service.getChallengeSubmissions(clientManager, completedChallengeId)
         submissions.length.should.be.eql(2)
         errorLogs.should.be.empty
       })
@@ -345,6 +370,13 @@ describe('Submission Review Service tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Client Manager have access to all reviews during review phase', async () => {
+        const submission = await service.getSubmissionReviews(clientManager, reviewPhaseSubmissions[1].id)
+        const reviews = submission.review
+        reviews.length.should.be.eql(0)
+        errorLogs.should.be.empty
+      })
+
       it('User who has not registered will not have access to any reviews', async () => {
         await service.getSubmissionReviews(nonSubmitter, reviewPhaseSubmissions[0].id).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
@@ -392,6 +424,13 @@ describe('Submission Review Service tests', () => {
 
       it('Copilot have access to all reviews during appeals phase', async () => {
         const submission = await service.getSubmissionReviews(copilot, appealsPhaseSubmissions[0].id)
+        const reviews = submission.review
+        reviews.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all reviews during appeals phase', async () => {
+        const submission = await service.getSubmissionReviews(clientManager, appealsPhaseSubmissions[0].id)
         const reviews = submission.review
         reviews.length.should.be.eql(2)
         errorLogs.should.be.empty
@@ -449,6 +488,13 @@ describe('Submission Review Service tests', () => {
 
       it('Copilot have access to all reviews after appeals response closure', async () => {
         const submission = await service.getSubmissionReviews(copilot, completedChallengeSubmissions[0].id)
+        const reviews = submission.review
+        reviews.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all reviews after appeals response closure', async () => {
+        const submission = await service.getSubmissionReviews(clientManager, completedChallengeSubmissions[0].id)
         const reviews = submission.review
         reviews.length.should.be.eql(2)
         errorLogs.should.be.empty
@@ -521,15 +567,19 @@ describe('Submission Review Service tests', () => {
       })
 
       it('Observer have access to all submissions during submission phase', async () => {
-        return service.getDownloadUrl(admin, subPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(observer, subPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Manager have access to all submissions during submission phase', async () => {
-        return service.getDownloadUrl(admin, subPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(manager, subPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Copilot have access to all submissions during submission phase', async () => {
-        return service.getDownloadUrl(admin, subPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(copilot, subPhaseSubmissions[0].id).should.be.fulfilled
+      })
+
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        return service.getDownloadUrl(clientManager, subPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('User who has not registered will not have access to any submission', async () => {
@@ -555,15 +605,19 @@ describe('Submission Review Service tests', () => {
       })
 
       it('Observer have access to all submissions during review phase', async () => {
-        return service.getDownloadUrl(admin, reviewPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(observer, reviewPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Manager have access to all submissions during review phase', async () => {
-        return service.getDownloadUrl(admin, reviewPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(manager, reviewPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Copilot have access to all submissions during review phase', async () => {
-        return service.getDownloadUrl(admin, reviewPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(copilot, reviewPhaseSubmissions[0].id).should.be.fulfilled
+      })
+
+      it('Client Manager have access to all submissions during review phase', async () => {
+        return service.getDownloadUrl(clientManager, reviewPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('User who has not registered will not have access to any submission', async () => {
@@ -589,15 +643,19 @@ describe('Submission Review Service tests', () => {
       })
 
       it('Observer have access to all submissions during appeals phase', async () => {
-        return service.getDownloadUrl(admin, appealsPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(observer, appealsPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Manager have access to all submissions during appeals phase', async () => {
-        return service.getDownloadUrl(admin, appealsPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(manager, appealsPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('Copilot have access to all submissions during appeals phase', async () => {
-        return service.getDownloadUrl(admin, appealsPhaseSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(copilot, appealsPhaseSubmissions[0].id).should.be.fulfilled
+      })
+
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        return service.getDownloadUrl(clientManager, appealsPhaseSubmissions[0].id).should.be.fulfilled
       })
 
       it('User who has not registered will not have access to any submission', async () => {
@@ -623,15 +681,19 @@ describe('Submission Review Service tests', () => {
       })
 
       it('Observer have access to all submissions after appeals response closure', async () => {
-        return service.getDownloadUrl(admin, completedChallengeSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(observer, completedChallengeSubmissions[0].id).should.be.fulfilled
       })
 
       it('Manager have access to all submissions after appeals response closure', async () => {
-        return service.getDownloadUrl(admin, completedChallengeSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(manager, completedChallengeSubmissions[0].id).should.be.fulfilled
       })
 
       it('Copilot have access to all submissions after appeals response closure', async () => {
-        return service.getDownloadUrl(admin, completedChallengeSubmissions[0].id).should.be.fulfilled
+        return service.getDownloadUrl(copilot, completedChallengeSubmissions[0].id).should.be.fulfilled
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        return service.getDownloadUrl(clientManager, completedChallengeSubmissions[0].id).should.be.fulfilled
       })
 
       it('User who has not registered will not have access to any submission', async () => {

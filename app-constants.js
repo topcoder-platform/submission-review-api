@@ -10,7 +10,9 @@ const ProjectRoles = {
   Copilot: 'Copilot',
   Observer: 'Observer',
   Reviewer: 'Reviewer',
-  Submitter: 'Submitter'
+  Submitter: 'Submitter',
+  Client_Manager: 'Client Manager',
+  Iterative_Reviewer: 'Iterative Reviewer'
 }
 
 const xHeaders = {
