@@ -49,13 +49,22 @@ const autoWrapExpress = (obj) => {
  * @param {Array} resources the challenge resources
  */
 const getAccess = (authUser, resources) => {
-  const hasFullAccess = authUser.roles.indexOf(UserRoles.Admin) > -1 || _.intersection(_.get(resources[authUser.userId], 'roles', []), [
+  // Case Insensitive Role checks
+  const hasFullAccess = authUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) > -1 || _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
     ProjectRoles.Manager,
     ProjectRoles.Copilot,
-    ProjectRoles.Observer
-  ]).length > 0
-  const isReviewer = !hasFullAccess && _.includes(_.get(resources[authUser.userId], 'roles', []), ProjectRoles.Reviewer)
-  const isSubmitter = !hasFullAccess && !isReviewer && _.includes(_.get(resources[authUser.userId], 'roles', []), ProjectRoles.Submitter)
+    ProjectRoles.Observer,
+    ProjectRoles.Client_Manager
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
+
+  const isReviewer = !hasFullAccess && _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
+    ProjectRoles.Reviewer,
+    ProjectRoles.Iterative_Reviewer
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
+
+  const isSubmitter = !hasFullAccess && !isReviewer && _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
+    ProjectRoles.Submitter
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
 
   return { hasFullAccess, isReviewer, isSubmitter }
 }
@@ -139,7 +148,11 @@ const getChallengeDetail = async (challengeId) => {
   ret.isF2F = content.subTrack !== undefined && content.subTrack.endsWith('FIRST_2_FINISH')
   if (ret.isF2F) {
     // F2F has multiple iterative-review phases, no appeal/appeal-response phase
-    ret.isReviewPhase = phases['Iterative Review'][phases['Iterative Review'].length - 1].actualEndTime === undefined
+    if (_.isArray(phases['Iterative Review'])) {
+      ret.isReviewPhase = phases['Iterative Review'][phases['Iterative Review'].length - 1].actualEndTime === undefined
+    } else {
+      ret.isReviewPhase = phases['Iterative Review'].actualEndTime === undefined
+    }
     if (content.winners) {
       ret.winF2F = content.winners[0].submitter
     }

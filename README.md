@@ -31,6 +31,41 @@ The following parameters can be set in config files or in env variables:
 - Start app `npm start`
 - App is running at `http://localhost:3000`
 
+
+## Running tests
+
+All external API calls are mocked in Unit tests and E2E tests. Hence tests can be run without any dependency.
+
+Logging level for tests can be controlled at `config/test.js`
+
+#### Running unit tests
+
+To run unit tests alone
+
+```
+npm run test
+```
+
+To run unit tests with coverage report
+
+```
+npm run test:cov
+```
+
+#### Running integration tests
+
+To run integration tests alone
+
+```
+npm run e2e
+```
+
+To run integration tests with coverage report
+
+```
+npm run e2e:cov
+```
+
 ## Notes
 - Currently, Submission v5 api and Review v5 api doesn't support OR data. In another word, we can't retrieve such review data of Challenges(Code, F2F and etc.) using OR to perform review. It has been approved that these issues will be left into next challenge in the forum.
 - This API accepts TC v3 JWT for authorization, `tc-core-library-js` node modules contains a middleware jwtAuthenticator which provide authorization business logic.
