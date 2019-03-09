@@ -49,13 +49,22 @@ const autoWrapExpress = (obj) => {
  * @param {Array} resources the challenge resources
  */
 const getAccess = (authUser, resources) => {
-  const hasFullAccess = authUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) > -1 || _.intersection(_.get(resources[authUser.userId], 'roles', []), [
+  // Case Insensitive Role checks
+  const hasFullAccess = authUser.roles.findIndex(item => UserRoles.Admin.toLowerCase() === item.toLowerCase()) > -1 || _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
     ProjectRoles.Manager,
     ProjectRoles.Copilot,
-    ProjectRoles.Observer
-  ]).length > 0
-  const isReviewer = !hasFullAccess && _.includes(_.get(resources[authUser.userId], 'roles', []), ProjectRoles.Reviewer)
-  const isSubmitter = !hasFullAccess && !isReviewer && _.includes(_.get(resources[authUser.userId], 'roles', []), ProjectRoles.Submitter)
+    ProjectRoles.Observer,
+    ProjectRoles.Client_Manager
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
+
+  const isReviewer = !hasFullAccess && _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
+    ProjectRoles.Reviewer,
+    ProjectRoles.Iterative_Reviewer
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
+
+  const isSubmitter = !hasFullAccess && !isReviewer && _.intersectionWith(_.get(resources[authUser.userId], 'roles', []), [
+    ProjectRoles.Submitter
+  ], (act, exp) => act.toLowerCase() === exp.toLowerCase()).length > 0
 
   return { hasFullAccess, isReviewer, isSubmitter }
 }

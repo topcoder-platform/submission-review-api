@@ -94,7 +94,7 @@ const resourcesResponse = {
         'id': 1070205,
         'projectId': 30049360,
         'name': null,
-        'role': 'Reviewer',
+        'role': 'reviewer',
         'phaseId': 733197,
         'submissions': [],
         'properties': {
@@ -111,7 +111,7 @@ const resourcesResponse = {
         'id': 1070206,
         'projectId': 30049360,
         'name': null,
-        'role': 'Reviewer',
+        'role': 'Iterative Reviewer',
         'phaseId': 733197,
         'submissions': [],
         'properties': {
@@ -168,7 +168,7 @@ const resourcesResponse = {
         'id': 40048651,
         'projectId': 30049360,
         'name': null,
-        'role': 'Submitter',
+        'role': 'submitter',
         'phaseId': null,
         'submissions': [],
         'properties': {
@@ -1173,6 +1173,21 @@ const copilot = {
   'jti': 'de3c915c-ad3e-4daa-9aa3-e3685abc22a1'
 }
 
+const clientManagerToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJUb3Bjb2RlciBVc2VyIl0sImlzcyI6Imh0dHBzOi8vYXBpLnRvcGNvZGVyLmNvbSIsImhhbmRsZSI6Im1lc3MiLCJleHAiOjE5NTIwMjQxNTksInVzZXJJZCI6Ijg1NDc4NDUiLCJpYXQiOjE1NTIwMjM1NTksImVtYWlsIjoibWVzc0B0b3Bjb2Rlci5jb20iLCJqdGkiOiJkZTNjOTE1Yy1hZDNlLTRkYWEtOWFhMy1lMzY4NWFiYzIyYTEifQ.6G5RDQn-LvlK_FSOG4DEo0Z3U7tt0xe4Lw_d4dzkJlQ'
+
+const clientManager = {
+  'roles': [
+    'Topcoder User'
+  ],
+  'iss': 'https://api.topcoder.com',
+  'handle': 'mess',
+  'exp': 1952024159,
+  'userId': '8547845',
+  'iat': 1552023559,
+  'email': 'mess@topcoder.com',
+  'jti': 'de3c915c-ad3e-4daa-9aa3-e3685abc22a1'
+}
+
 module.exports = {
   invalidChallengeId,
   invalidChallengeIdSubmission,
@@ -1213,5 +1228,7 @@ module.exports = {
   reviewerToken,
   reviewer,
   copilotToken,
-  copilot
+  copilot,
+  clientManagerToken,
+  clientManager
 }
