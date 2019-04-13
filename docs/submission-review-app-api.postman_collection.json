@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "49b83b10-168a-4878-821f-c3080fb29892",
+		"_postman_id": "2887d533-92eb-446b-be89-b9871eb05778",
 		"name": "submission-review-app-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -675,6 +675,272 @@
 						"description": "denis's submission"
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Submission Artifacts",
+			"item": [
+				{
+					"name": "Get Submission artifacts by tc admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db509abe-465e-43a4-84ed-1a90c4cc35c4",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.environment.set(\"ARTIFACT_ID\", pm.response.json().artifacts[0]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{mess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/artifacts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"artifacts"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Submission artifacts by co-pilot",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "95e9a599-a6c3-48e0-853b-0ef1172a1817",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.environment.set(\"ARTIFACT_ID\", pm.response.json().artifacts[0]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{hohosky_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/artifacts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"artifacts"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "78c580e1-fffa-432d-b1ca-aad07304f290",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "026a24e3-efe7-4d60-8036-1403ce2f0b50",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Download submission artifact",
+			"item": [
+				{
+					"name": "Download Submission artifact by tc admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "db509abe-465e-43a4-84ed-1a90c4cc35c4",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{mess_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/artifacts/{{ARTIFACT_ID}}/download",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"artifacts",
+								"{{ARTIFACT_ID}}",
+								"download"
+							]
+						},
+						"description": "denis's submission"
+					},
+					"response": []
+				},
+				{
+					"name": "Download Submission artifact by co-pilot",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "95e9a599-a6c3-48e0-853b-0ef1172a1817",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.environment.set(\"ARTIFACT_ID\", pm.response.json().artifacts[0]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{hohosky_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions/{{SUBMISSION_ID}}/artifacts",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions",
+								"{{SUBMISSION_ID}}",
+								"artifacts"
+							]
+						},
+						"description": "lars2520's submission"
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "78c580e1-fffa-432d-b1ca-aad07304f290",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "026a24e3-efe7-4d60-8036-1403ce2f0b50",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
