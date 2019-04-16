@@ -1188,6 +1188,13 @@ const clientManager = {
   'jti': 'de3c915c-ad3e-4daa-9aa3-e3685abc22a1'
 }
 
+const artifactsResponse = {
+  'artifacts': [
+    'ab3c915c-ad3e-4daa-9aa3-e3685abc22c3',
+    'ab3c915c-ad3e-4daa-9aa3-e3685abc22b4'
+  ]
+}
+
 module.exports = {
   invalidChallengeId,
   invalidChallengeIdSubmission,
@@ -1230,5 +1237,6 @@ module.exports = {
   copilotToken,
   copilot,
   clientManagerToken,
-  clientManager
+  clientManager,
+  artifactsResponse
 }
