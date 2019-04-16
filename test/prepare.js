@@ -31,12 +31,13 @@ const { noResourceChallengeId,
   completedChallengeSubmissions,
   f2fSubmissions,
   invalidChallengeIdSubmission,
-  noResourceChallengeIdSubmission } = require('./testData')
+  noResourceChallengeIdSubmission,
+  artifactsResponse } = require('./testData')
 
 prepare(function (done) {
   // Mock Posting to Bus API and ES interactions
   const authUrl = URL.parse(config.M2M.AUTH0_URL)
-  const reviewTypesUrl = URL.parse(`${config.REVIEW_TYPE_API_URL}?&page=1&perPage=10`)
+  const reviewTypesUrl = URL.parse(`${config.REVIEW_TYPE_API_URL}?&page=1&perPage=100`)
 
   nock(/.com/)
     .persist()
@@ -61,6 +62,10 @@ prepare(function (done) {
 
       if (path.indexOf('download') !== -1) {
         return 'download'
+      }
+
+      if (path.indexOf('artifacts') !== -1) {
+        return 'artifacts'
       }
 
       if (path.indexOf('submissions') !== -1) {
@@ -117,6 +122,8 @@ prepare(function (done) {
     .reply(200, noResourceChallengeIdSubmission)
     .get('download')
     .reply(200, 'download')
+    .get('artifacts')
+    .reply(200, artifactsResponse)
 
   done()
 }, function (done) {
