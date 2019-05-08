@@ -22,6 +22,8 @@ The following parameters can be set in config files or in env variables:
 - TOKEN_CACHE_TIME: The M2M token cache time
 - AUTH0_CLIENT_ID: The M2M client ID
 - AUTH0_CLIENT_SECRET: The M2M client secret
+- MM_REVIEW_TYPES: MM review type names, used to filter valid MM reviews
+
 
 ## Local Deployment
 

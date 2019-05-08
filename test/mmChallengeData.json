@@ -1,0 +1,2014 @@
+[
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206506,
+        "created": "2019-01-16T16:16:02.733Z",
+        "submissionPhaseId": 764158,
+        "id": "94a09418-b6e0-4dec-a8ae-5d372a9a0951",
+        "type": "Contest Submission",
+        "updated": "2019-01-16T16:16:12.131Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/94a09418-b6e0-4dec-a8ae-5d372a9a0951.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206507,
+        "created": "2019-01-16T16:39:57.733Z",
+        "submissionPhaseId": 764158,
+        "id": "d1c0df05-e385-4288-9dec-2d27326febd4",
+        "type": "Contest Submission",
+        "updated": "2019-01-16T16:40:03.606Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/d1c0df05-e385-4288-9dec-2d27326febd4.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206522,
+        "created": "2019-01-16T18:53:43.878Z",
+        "submissionPhaseId": 764158,
+        "id": "48a4b4cc-dd1b-4f3e-81c9-29301c327e1d",
+        "type": "Contest Submission",
+        "updated": "2019-01-16T18:53:47.428Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/48a4b4cc-dd1b-4f3e-81c9-29301c327e1d.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206542,
+        "created": "2019-01-17T15:42:09.132Z",
+        "submissionPhaseId": 764158,
+        "id": "5ff05d51-af47-42dd-82b2-cdaa613b142f",
+        "type": "Contest Submission",
+        "updated": "2019-01-17T15:42:14.895Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/5ff05d51-af47-42dd-82b2-cdaa613b142f.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "TonyJ",
+        "legacySubmissionId": 206546,
+        "created": "2019-01-17T19:52:24.795Z",
+        "submissionPhaseId": 764158,
+        "id": "b86e031c-6a87-470a-8c92-d25ef493ec82",
+        "type": "Contest Submission",
+        "updated": "2019-01-17T19:52:28.686Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/b86e031c-6a87-470a-8c92-d25ef493ec82.zip",
+        "fileType": "zip",
+        "memberId": 8547899
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206550,
+        "created": "2019-01-18T02:23:08.744Z",
+        "submissionPhaseId": 764158,
+        "id": "4d2f1582-824f-4ded-abde-b349ecf3c24b",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T02:23:16.377Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/4d2f1582-824f-4ded-abde-b349ecf3c24b.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206551,
+        "created": "2019-01-18T03:21:05.339Z",
+        "submissionPhaseId": 764158,
+        "id": "c38173f6-c4be-4b59-baf0-41746156b6ca",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T03:21:10.887Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/c38173f6-c4be-4b59-baf0-41746156b6ca.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "legacySubmissionId": 206553,
+        "created": "2019-01-18T04:12:13.443Z",
+        "submissionPhaseId": 764158,
+        "id": "12e92703-0b2c-4176-b53f-231c96269137",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T04:12:20.834Z",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/12e92703-0b2c-4176-b53f-231c96269137.zip",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-18T21:00:23.336Z",
+        "submissionPhaseId": 764158,
+        "id": "f5dc4435-05cd-4254-84c7-4d131f6abc34",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T21:00:29.368Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/f5dc4435-05cd-4254-84c7-4d131f6abc34.zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-18T21:59:34.184Z",
+        "submissionPhaseId": 764158,
+        "id": "8439c288-4ee9-4fcd-8d63-6b8085f8b3b4",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T21:59:40.444Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/8439c288-4ee9-4fcd-8d63-6b8085f8b3b4.zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-18T22:30:23.298Z",
+        "submissionPhaseId": 764158,
+        "id": "0c9c543c-8fbe-454a-81de-39976c767c2f",
+        "type": "Contest Submission",
+        "updated": "2019-01-18T22:30:29.578Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/0c9c543c-8fbe-454a-81de-39976c767c2f.zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-19T00:06:17.477Z",
+        "submissionPhaseId": 764158,
+        "id": "40aeac60-07b6-40e8-baf2-93bcc1823121",
+        "type": "Contest Submission",
+        "updated": "2019-01-19T00:06:23.738Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/40aeac60-07b6-40e8-baf2-93bcc1823121.zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-19T00:14:00.234Z",
+        "submissionPhaseId": 764158,
+        "id": "5251393e-8049-4208-b2ce-fd1127e3f34a",
+        "type": "Contest Submission",
+        "updated": "2019-01-19T00:14:07.408Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/5251393e-8049-4208-b2ce-fd1127e3f34a.zip",
+        "memberId": 23225544
+    },
+    {
+        "challengeId": 30054625,
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "createdBy": "lazybaer",
+        "created": "2019-01-19T00:38:59.599Z",
+        "submissionPhaseId": 764158,
+        "id": "815fea90-914b-429b-a4e7-ca9effedceb4",
+        "type": "Contest Submission",
+        "updated": "2019-01-19T00:39:06.918Z",
+        "fileType": "zip",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/815fea90-914b-429b-a4e7-ca9effedceb4.zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "created": "2019-01-19T03:55:12.210Z",
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/55cbb5bc-7406-4c7f-978d-2524cdc692ff.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 24.18504,
+                "metadata": {
+                    "testCases": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "137711",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[19-Jan-2019 04:00:29]-: # Completed in 18.68s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "133487",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[19-Jan-2019 04:00:58]-: # Completed in 18.43s\n"
+                            }
+                        }
+                    ],
+                    "testType": "provisional"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "55cbb5bc-7406-4c7f-978d-2524cdc692ff",
+                "reviewerId": "98d909d3-645c-490e-a891-75adec7e098c",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-19T04:01:13.185Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "1c90eca2-baa6-4488-8b5b-34196f8a3b97",
+                "updated": "2019-01-19T04:01:13.185Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "a9994a30-39fd-4266-84ca-b018aff2f06f",
+                "submissionId": "55cbb5bc-7406-4c7f-978d-2524cdc692ff",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T03:55:20.185Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "ea4e217f-4471-43ca-a245-01c8c0e069b5",
+                "updated": "2019-01-19T03:55:20.185Z"
+            }
+        ],
+        "id": "55cbb5bc-7406-4c7f-978d-2524cdc692ff",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T03:55:19.105Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+        "created": "2019-01-19T04:03:18.949Z",
+        "legacySubmissionId": 206573,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/7a818e0f-6069-41b6-8616-e05533e916c0.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 24.21273,
+                "metadata": {
+                    "testCases": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "136508",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[19-Jan-2019 04:08:33]-: # Completed in 18.93s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "134390",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[19-Jan-2019 04:09:02]-: # Completed in 18.30s\n"
+                            }
+                        }
+                    ],
+                    "testType": "provisional"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "7a818e0f-6069-41b6-8616-e05533e916c0",
+                "reviewerId": "f5b715fb-08a4-4766-b239-01cfa6b001bc",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-19T04:09:17.183Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "8c9e736a-1a67-4811-849c-34100ed3110e",
+                "updated": "2019-01-19T04:09:17.183Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "0213eff1-1f7c-4a74-9a16-a8c76c3543f2",
+                "submissionId": "7a818e0f-6069-41b6-8616-e05533e916c0",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T04:03:24.338Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "e53d684d-9aa8-46e6-92a6-8a64126737d1",
+                "updated": "2019-01-19T04:03:24.338Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 24.3,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "submissionId": "7a818e0f-6069-41b6-8616-e05533e916c0",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T04:09:22.258Z",
+                "scoreCardId": 30001031,
+                "id": "eb8ab888-eed9-4b2e-9358-1ec0f612de0e",
+                "isPassing": false,
+                "updated": "2019-01-19T04:09:22.258Z"
+            }
+        ],
+        "id": "7a818e0f-6069-41b6-8616-e05533e916c0",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T04:03:23.102Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-19T04:22:41.536Z",
+        "legacySubmissionId": 206574,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/cef963a0-203e-4c60-8cd7-35bf37a45d58.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "8f55dbc2-5b16-47be-8d95-97bcaae12d06",
+                "submissionId": "cef963a0-203e-4c60-8cd7-35bf37a45d58",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T04:22:49.792Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "166dd755-15e7-44fe-ab8e-983e05e3a00d",
+                "updated": "2019-01-19T04:22:49.792Z"
+            }
+        ],
+        "id": "cef963a0-203e-4c60-8cd7-35bf37a45d58",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T04:22:41.536Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-19T04:32:10.827Z",
+        "legacySubmissionId": 206575,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/defd7856-d564-4949-acb2-04c559fc8127.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "aa75665b-1ad8-480f-9472-4a3f207165ae",
+                "submissionId": "defd7856-d564-4949-acb2-04c559fc8127",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T04:32:18.145Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "72c9b2c0-1c1f-4f47-8d40-a8cc3e3814bd",
+                "updated": "2019-01-19T04:32:18.145Z"
+            }
+        ],
+        "id": "defd7856-d564-4949-acb2-04c559fc8127",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T04:32:10.827Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-19T14:14:38.743Z",
+        "legacySubmissionId": 206576,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/e109bb7b-1fdc-4bf1-a334-c13f4749da61.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 24.181160000000002,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "137504",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[19-Jan-2019 14:19:56]-: # Completed in 19.74s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "134088",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[19-Jan-2019 14:20:27]-: # Completed in 19.45s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "e109bb7b-1fdc-4bf1-a334-c13f4749da61",
+                "reviewerId": "4ca2e452-2064-445f-a8a1-0b4a07dafb48",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-19T14:20:43.301Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "a03e22e9-8f4b-496d-b672-adcf8505daa4",
+                "updated": "2019-01-19T14:20:43.301Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "ed2ecd7d-8852-403b-9501-703a2db5d9cd",
+                "submissionId": "e109bb7b-1fdc-4bf1-a334-c13f4749da61",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T14:14:45.832Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "c632de1c-a1ef-4429-9e70-e80177a0f683",
+                "updated": "2019-01-19T14:14:45.832Z"
+            }
+        ],
+        "id": "e109bb7b-1fdc-4bf1-a334-c13f4749da61",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T14:14:38.743Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-19T14:25:23.938Z",
+        "legacySubmissionId": 206577,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/c1f77c70-4d20-4568-be38-2388c4b87ed2.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "5acce801-90b0-4b33-9515-b0fde9cbc4b1",
+                "submissionId": "c1f77c70-4d20-4568-be38-2388c4b87ed2",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T14:25:29.234Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "4e153a5b-f05d-4437-946c-01e0c48b5aa0",
+                "updated": "2019-01-19T14:25:29.234Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "c1f77c70-4d20-4568-be38-2388c4b87ed2",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-19T14:26:06.564Z",
+                "scoreCardId": 30001852,
+                "id": "b890e479-9dea-420a-837b-84f58f852c9f",
+                "isPassing": true,
+                "updated": "2019-01-19T14:26:06.564Z"
+            }
+        ],
+        "id": "c1f77c70-4d20-4568-be38-2388c4b87ed2",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T14:25:23.938Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-19T23:15:38.631Z",
+        "legacySubmissionId": 206578,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/448f60ca-5b24-4256-8ad0-1efe7628133d.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "ca1c3f17-847e-4382-abce-f52b3a6e17f0",
+                "submissionId": "448f60ca-5b24-4256-8ad0-1efe7628133d",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-19T23:15:46.335Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "935236b0-5219-4b4d-8870-1de657f36d5a",
+                "updated": "2019-01-19T23:15:46.335Z"
+            }
+        ],
+        "id": "448f60ca-5b24-4256-8ad0-1efe7628133d",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-19T23:15:38.631Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-20T14:06:58.538Z",
+        "legacySubmissionId": 206579,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/ff124186-0ae5-4f10-bbe9-5b9ef2299752.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "5747f09f-59c8-4576-a14a-c26a2006d892",
+                "submissionId": "ff124186-0ae5-4f10-bbe9-5b9ef2299752",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-20T14:07:08.248Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "9894f589-0817-4e51-a8e9-fae3f1e6ed0f",
+                "updated": "2019-01-20T14:07:08.248Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "ff124186-0ae5-4f10-bbe9-5b9ef2299752",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-20T14:25:55.850Z",
+                "scoreCardId": 30001031,
+                "id": "c3568cf1-a26a-4912-a293-6b6459e7ca84",
+                "isPassing": true,
+                "updated": "2019-01-20T14:25:55.850Z"
+            }
+        ],
+        "id": "ff124186-0ae5-4f10-bbe9-5b9ef2299752",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-20T14:06:58.538Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-20T17:49:18.450Z",
+        "legacySubmissionId": 206581,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/9aef788c-57f8-4382-832b-ce3629ddca34.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "e27aa320-f5af-4c9b-88fb-813e53e900bb",
+                "submissionId": "9aef788c-57f8-4382-832b-ce3629ddca34",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-20T17:49:27.305Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "7a078479-b193-4d13-95ff-298e84bf031a",
+                "updated": "2019-01-20T17:49:27.305Z"
+            }
+        ],
+        "id": "9aef788c-57f8-4382-832b-ce3629ddca34",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-20T17:49:18.450Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-20T17:50:07.489Z",
+        "legacySubmissionId": 206582,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/725b129d-0f72-43fd-8ce8-87271c9c99f1.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "f71ca726-deac-442f-9a76-14cedcc1f467",
+                "submissionId": "725b129d-0f72-43fd-8ce8-87271c9c99f1",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-20T17:50:13.073Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "46ca7209-02b9-4134-bff0-bd618c3fbac6",
+                "updated": "2019-01-20T17:50:13.073Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "725b129d-0f72-43fd-8ce8-87271c9c99f1",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-20T18:06:29.023Z",
+                "scoreCardId": 30001031,
+                "id": "9875ae3e-18e6-42f3-bc79-b11b8a9d09ec",
+                "isPassing": true,
+                "updated": "2019-01-20T18:06:29.023Z"
+            }
+        ],
+        "id": "725b129d-0f72-43fd-8ce8-87271c9c99f1",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-20T17:50:07.489Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-20T18:58:57.937Z",
+        "legacySubmissionId": 206583,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/e617c123-8c99-4a6e-ae9f-3ec8deaf2954.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "e617c123-8c99-4a6e-ae9f-3ec8deaf2954",
+                "reviewerId": "ab705000-dc71-4501-9a48-d90802ec1332",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-20T19:14:44.154Z",
+                "scoreCardId": 30001031,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "85c08d37-f979-4d49-b882-387242fa6e0d",
+                "updated": "2019-01-20T19:14:44.154Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "247a0125-b100-4e9f-93a7-0ec096103358",
+                "submissionId": "e617c123-8c99-4a6e-ae9f-3ec8deaf2954",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-20T18:59:05.574Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "ddc883c6-b4a2-44ea-898b-fb0f985a9794",
+                "updated": "2019-01-20T18:59:05.574Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "e617c123-8c99-4a6e-ae9f-3ec8deaf2954",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-21T17:04:13.017Z",
+                "scoreCardId": 30001031,
+                "id": "7caa6eed-5cc4-41bb-8cfe-38c9fdc7261d",
+                "isPassing": true,
+                "updated": "2019-01-21T17:04:13.017Z"
+            }
+        ],
+        "id": "e617c123-8c99-4a6e-ae9f-3ec8deaf2954",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-20T18:58:57.937Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-21T18:06:08.289Z",
+        "legacySubmissionId": 206584,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/06262a9c-5c61-4ab0-8c0b-b1293b78c3f3.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 24.12284,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "138642",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[21-Jan-2019 18:11:33]-: # Completed in 20.22s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "134898",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[21-Jan-2019 18:12:04]-: # Completed in 19.83s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "06262a9c-5c61-4ab0-8c0b-b1293b78c3f3",
+                "reviewerId": "f925b9fb-5e04-4009-8ec8-03c05628d942",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-21T18:12:19.678Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "92114465-91c0-4a8d-8165-0c9fe65655ec",
+                "updated": "2019-01-21T18:12:19.678Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "1d49140c-fde9-4a2b-8274-969228cbfa9f",
+                "submissionId": "06262a9c-5c61-4ab0-8c0b-b1293b78c3f3",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-21T18:06:16.492Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "20a200d3-e1d0-4d47-b3dc-a850f557380a",
+                "updated": "2019-01-21T18:06:16.492Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "06262a9c-5c61-4ab0-8c0b-b1293b78c3f3",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-21T18:18:03.965Z",
+                "scoreCardId": 30001852,
+                "id": "65f5f39e-5427-42a0-83ae-fd8bb4c075fc",
+                "isPassing": true,
+                "updated": "2019-01-21T18:18:03.965Z"
+            }
+        ],
+        "id": "06262a9c-5c61-4ab0-8c0b-b1293b78c3f3",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-21T18:06:08.289Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "sachin-kumar",
+        "created": "2019-01-22T08:41:56.724Z",
+        "legacySubmissionId": 206585,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/8c04d13c-3480-4281-8602-114b1afd3fbf.zip",
+        "challengeId": 30054625,
+        "createdBy": "sachin-kumar",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "55ce5321-d0b9-4540-9a76-20391524a122",
+                "submissionId": "8c04d13c-3480-4281-8602-114b1afd3fbf",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T08:42:04.200Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "3adc032b-d917-48c0-8da1-05a8bfd5a44a",
+                "updated": "2019-01-22T08:42:04.200Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "8c04d13c-3480-4281-8602-114b1afd3fbf",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T08:42:10.817Z",
+                "scoreCardId": 30001852,
+                "id": "d88e56ef-056f-45f2-b841-a0f630395808",
+                "isPassing": true,
+                "updated": "2019-01-22T08:42:10.817Z"
+            }
+        ],
+        "id": "8c04d13c-3480-4281-8602-114b1afd3fbf",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T08:41:56.724Z",
+        "fileType": "zip",
+        "memberId": 40153932
+    },
+    {
+        "updatedBy": "sachin-kumar",
+        "created": "2019-01-22T11:17:22.393Z",
+        "legacySubmissionId": 206586,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/514aa547-a253-404f-8ffb-dc964d87c443.zip",
+        "challengeId": 30054625,
+        "createdBy": "sachin-kumar",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "de0f03e4-19f7-43cb-981f-39c3ec70340d",
+                "submissionId": "514aa547-a253-404f-8ffb-dc964d87c443",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T11:17:28.061Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "cb1476d2-48ed-4c9c-851b-32b1f3ceaca7",
+                "updated": "2019-01-22T11:17:28.061Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "514aa547-a253-404f-8ffb-dc964d87c443",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T11:17:33.864Z",
+                "scoreCardId": 30001852,
+                "id": "f7024748-c3a2-4575-8985-b7dcd707b3f4",
+                "isPassing": true,
+                "updated": "2019-01-22T11:17:33.864Z"
+            }
+        ],
+        "id": "514aa547-a253-404f-8ffb-dc964d87c443",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T11:17:22.393Z",
+        "fileType": "zip",
+        "memberId": 40153932
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T13:44:07.191Z",
+        "legacySubmissionId": 206587,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/109752b9-7d1b-4a10-831c-c42330d0efe6.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 24.177139999999998,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "138032",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[22-Jan-2019 13:49:28]-: # Completed in 19.76s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "133274",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[22-Jan-2019 13:49:59]-: # Completed in 19.65s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "109752b9-7d1b-4a10-831c-c42330d0efe6",
+                "reviewerId": "8660705a-7c36-45fb-b401-573e63e24f67",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T13:50:15.030Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "3f1ede04-5934-4351-8cbf-0293187fafc1",
+                "updated": "2019-01-22T13:50:15.030Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "43f55955-c755-4aa0-9812-e77ddac5b3c3",
+                "submissionId": "109752b9-7d1b-4a10-831c-c42330d0efe6",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T13:44:14.775Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "508085e9-0864-4107-af4c-e6890dd5abbf",
+                "updated": "2019-01-22T13:44:14.775Z"
+            }
+        ],
+        "id": "109752b9-7d1b-4a10-831c-c42330d0efe6",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T13:44:07.191Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:01:26.733Z",
+        "legacySubmissionId": 206588,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/fcbb9056-1c4e-44e5-a0cc-bcfb637d57f5.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "fcbb9056-1c4e-44e5-a0cc-bcfb637d57f5",
+                "reviewerId": "f9515714-60cf-4c12-8add-2ce2d3ac24c8",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:01:40.484Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "af252385-1d51-4a32-aa23-c20103f4d1f8",
+                "updated": "2019-01-22T14:01:40.484Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "5cc221ef-96eb-4de6-9aa5-c3d5442493a7",
+                "submissionId": "fcbb9056-1c4e-44e5-a0cc-bcfb637d57f5",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:01:34.179Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "fe4d409b-5fdb-4eaf-8b6f-cc5311131c86",
+                "updated": "2019-01-22T14:01:34.179Z"
+            }
+        ],
+        "id": "fcbb9056-1c4e-44e5-a0cc-bcfb637d57f5",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:01:26.733Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:03:09.329Z",
+        "legacySubmissionId": 206589,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/5cd64fc7-960c-45e5-9de5-dc3401470b2b.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "5cd64fc7-960c-45e5-9de5-dc3401470b2b",
+                "reviewerId": "f05be23a-fd74-4684-bf04-833a81a7969e",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:03:20.884Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "1d4db52c-832c-4f73-b7c0-bbf70b90bcec",
+                "updated": "2019-01-22T14:03:20.884Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "8a1df5e1-ace4-4f45-be0b-d312cb26ff41",
+                "submissionId": "5cd64fc7-960c-45e5-9de5-dc3401470b2b",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:03:14.935Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "fd1ce3d5-6796-42d5-9e83-5f1ea8f63079",
+                "updated": "2019-01-22T14:03:14.935Z"
+            }
+        ],
+        "id": "5cd64fc7-960c-45e5-9de5-dc3401470b2b",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:03:09.329Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:03:41.627Z",
+        "legacySubmissionId": 206590,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/f81cc55e-013b-45b0-8339-b9a161c444d3.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "f81cc55e-013b-45b0-8339-b9a161c444d3",
+                "reviewerId": "f00207a4-36f8-4520-80b1-83c7c3101214",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:03:54.481Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "5a05841d-7e6b-4c07-aef3-e3d2de1c7b7a",
+                "updated": "2019-01-22T14:03:54.481Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "ff3635ff-7af1-4032-8c83-fbd20a6cec6d",
+                "submissionId": "f81cc55e-013b-45b0-8339-b9a161c444d3",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:03:48.446Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "48e61a64-68d7-4beb-a481-2febb0dbdba2",
+                "updated": "2019-01-22T14:03:48.446Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "submissionId": "f81cc55e-013b-45b0-8339-b9a161c444d3",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:03:56.926Z",
+                "scoreCardId": 30001031,
+                "id": "9bdc5f71-31e2-4b02-b4d9-43af77e76d0b",
+                "isPassing": false,
+                "updated": "2019-01-22T14:03:56.926Z"
+            }
+        ],
+        "id": "f81cc55e-013b-45b0-8339-b9a161c444d3",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:03:41.627Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:05:33.543Z",
+        "legacySubmissionId": 206591,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/67713ad3-ac80-47f0-ba39-363d6e8d1ec1.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "67713ad3-ac80-47f0-ba39-363d6e8d1ec1",
+                "reviewerId": "bd63b780-432b-4f0c-baa7-0d09d5f198d2",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:05:47.189Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "2eb8ca95-f545-4bd0-97f1-a37e76ec97c3",
+                "updated": "2019-01-22T14:05:47.189Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "b89995d1-bf73-4dbc-96f7-84fa9b882bc8",
+                "submissionId": "67713ad3-ac80-47f0-ba39-363d6e8d1ec1",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:05:40.554Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "6b89e066-46c7-4cb6-b606-bdc8e80ad1a9",
+                "updated": "2019-01-22T14:05:40.554Z"
+            }
+        ],
+        "id": "67713ad3-ac80-47f0-ba39-363d6e8d1ec1",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:05:33.543Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:06:13.733Z",
+        "legacySubmissionId": 206592,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/927cb9db-1972-47ea-83ef-addcc1be09a0.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "927cb9db-1972-47ea-83ef-addcc1be09a0",
+                "reviewerId": "822d5f05-52a7-4fff-9878-4161d0821bcc",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:06:25.782Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "694d2c2f-8834-4188-bfdc-d1e575bb65b9",
+                "updated": "2019-01-22T14:06:25.782Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "4ad2a504-98b6-4e19-b78a-7f008e5aee5e",
+                "submissionId": "927cb9db-1972-47ea-83ef-addcc1be09a0",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:06:19.779Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "894706c1-d695-47fe-b2bc-9653ec0f18d2",
+                "updated": "2019-01-22T14:06:19.779Z"
+            }
+        ],
+        "id": "927cb9db-1972-47ea-83ef-addcc1be09a0",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:06:13.733Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:07:21.340Z",
+        "legacySubmissionId": 206593,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/2fbc80cf-0f9e-4c0f-b551-3701e1edb6fe.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "2fbc80cf-0f9e-4c0f-b551-3701e1edb6fe",
+                "reviewerId": "937b47d4-d361-4ae0-9c46-f9eaea4f130a",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:07:33.381Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "7dc771bd-eb5b-4efc-b9e8-e0ff50c38d08",
+                "updated": "2019-01-22T14:07:33.381Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "c621959e-3f63-47cf-8b14-9e35b7223327",
+                "submissionId": "2fbc80cf-0f9e-4c0f-b551-3701e1edb6fe",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:07:27.569Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "7c3c7e7d-bc7a-467c-afae-8ffef3b7cacf",
+                "updated": "2019-01-22T14:07:27.569Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "submissionId": "2fbc80cf-0f9e-4c0f-b551-3701e1edb6fe",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:07:36.131Z",
+                "scoreCardId": 30001031,
+                "id": "8b1cc4b9-7e25-4b88-99ef-493ea78dec66",
+                "isPassing": false,
+                "updated": "2019-01-22T14:07:36.131Z"
+            }
+        ],
+        "id": "2fbc80cf-0f9e-4c0f-b551-3701e1edb6fe",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:07:21.340Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:07:51.947Z",
+        "legacySubmissionId": 206594,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/1b634851-92ec-4e2b-a917-f5ddd3f1ec23.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 0,
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1b634851-92ec-4e2b-a917-f5ddd3f1ec23",
+                "reviewerId": "92adaddb-8194-4107-802d-af5b2372cc8a",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:08:05.042Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "170c933a-6685-4a68-b278-7d6bd2357bef",
+                "updated": "2019-01-22T14:08:05.042Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "e2c14b4d-9f4d-42c9-8304-f4f029135948",
+                "submissionId": "1b634851-92ec-4e2b-a917-f5ddd3f1ec23",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:07:58.878Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "e403c2eb-5548-455b-8713-06d75468ad45",
+                "updated": "2019-01-22T14:07:58.878Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "submissionId": "1b634851-92ec-4e2b-a917-f5ddd3f1ec23",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:08:08.316Z",
+                "scoreCardId": 30001031,
+                "id": "7ccda476-10a2-45c3-bdc4-cb3616fb3ccc",
+                "isPassing": false,
+                "updated": "2019-01-22T14:08:08.316Z"
+            }
+        ],
+        "id": "1b634851-92ec-4e2b-a917-f5ddd3f1ec23",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:07:51.947Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T14:11:50.532Z",
+        "legacySubmissionId": 206595,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/60b0fbd2-7d40-4b10-8de9-492e02f79f21.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 22.3868,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "59847",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[22-Jan-2019 14:15:09]-: # Completed in 19.88s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.49222869182254",
+                                    "secs": "57495",
+                                    "auc": "0.849990821888528"
+                                },
+                                "successMessage": "-[22-Jan-2019 14:15:39]-: # Completed in 19.42s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "60b0fbd2-7d40-4b10-8de9-492e02f79f21",
+                "reviewerId": "7f1a078c-b7d0-42b1-810d-ffd53bbf9a75",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T14:15:55.391Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "d81873de-fa7d-44a6-95f7-0471570bba0e",
+                "updated": "2019-01-22T14:15:55.391Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "6282b2b1-6413-4212-8b3f-589da97f7f5e",
+                "submissionId": "60b0fbd2-7d40-4b10-8de9-492e02f79f21",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T14:11:55.727Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "276e85ef-d654-47ee-a575-304f5a074148",
+                "updated": "2019-01-22T14:11:55.727Z"
+            }
+        ],
+        "id": "60b0fbd2-7d40-4b10-8de9-492e02f79f21",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T14:11:50.532Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "TonyJ",
+        "created": "2019-01-22T15:47:19.430Z",
+        "legacySubmissionId": 206596,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/1aaf15c3-c7f2-4005-bd79-ddf3dad701bb.zip",
+        "challengeId": 30054625,
+        "createdBy": "TonyJ",
+        "review": [
+            {
+                "score": 32.967259999999996,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.734756074843925",
+                                    "secs": "6136",
+                                    "auc": "0.893494315987826"
+                                },
+                                "successMessage": "-[22-Jan-2019 19:06:08]-: # Completed in 19.34s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.546299211719891",
+                                    "secs": "5682",
+                                    "auc": "0.892436671826257"
+                                },
+                                "successMessage": "-[22-Jan-2019 19:06:37]-: # Completed in 18.40s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "reviewerId": "d251dde0-479f-4ac1-82b0-06e7463bf6ac",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T19:06:52.814Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "819ba206-0c30-4047-9a51-726904eb1157",
+                "updated": "2019-01-22T19:06:52.814Z"
+            },
+            {
+                "score": 32.95133,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.732490077296306",
+                                    "secs": "6272",
+                                    "auc": "0.893763787128286"
+                                },
+                                "successMessage": "-[22-Jan-2019 18:56:07]-: # Completed in 19.07s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.54880435431669",
+                                    "secs": "5624",
+                                    "auc": "0.892413546540432"
+                                },
+                                "successMessage": "-[22-Jan-2019 18:56:37]-: # Completed in 18.75s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "reviewerId": "735f48d1-6283-4512-b139-07e263460db8",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T18:56:52.129Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "e634433c-167a-4cf2-a949-f01d18626723",
+                "updated": "2019-01-22T18:56:52.129Z"
+            },
+            {
+                "score": 0,
+                "metadata": {
+                    "testType": "provisional"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "reviewerId": "fde20144-a883-4985-841b-073a3d137a64",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T18:51:15.575Z",
+                "scoreCardId": 30001031,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "dbd1ffb7-2fe4-4ef1-882b-b671a6ed5140",
+                "updated": "2019-01-22T18:51:15.575Z"
+            },
+            {
+                "score": 32.902029999999996,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.733097572430401",
+                                    "secs": "6389",
+                                    "auc": "0.890892558348029"
+                                },
+                                "successMessage": "-[22-Jan-2019 16:32:16]-: # Completed in 19.04s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.550154329193985",
+                                    "secs": "5751",
+                                    "auc": "0.892506498716816"
+                                },
+                                "successMessage": "-[22-Jan-2019 16:32:45]-: # Completed in 18.35s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "reviewerId": "909d1063-bea1-4596-bf0c-4db91bbda833",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T16:33:00.783Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "cc5a7214-86e8-4507-a0da-f4f21eae0099",
+                "updated": "2019-01-22T16:33:00.783Z"
+            },
+            {
+                "score": 33.10738,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.735214850669549",
+                                    "secs": "6393",
+                                    "auc": "0.893226068510176"
+                                },
+                                "successMessage": "-[22-Jan-2019 15:48:31]-: # Completed in 19.07s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.549879982113289",
+                                    "secs": "5741",
+                                    "auc": "0.891929883262113"
+                                },
+                                "successMessage": "-[22-Jan-2019 15:49:00]-: # Completed in 18.59s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "reviewerId": "85e222da-a21a-44fb-b49e-660f4a7885fd",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T15:49:15.993Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "e1e6561c-3a63-4edd-af81-904c187db440",
+                "updated": "2019-01-22T15:49:15.993Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "871ced02-2e95-4e18-886d-a5eb773ad13b",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T15:47:27.746Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "96b1036a-a603-4ac8-8af3-c693a23efc3b",
+                "updated": "2019-01-22T15:47:27.746Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 40.88,
+                "metadata": {
+                    "testType": "system",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP003_PC3_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.734756074843925",
+                                    "secs": "6136",
+                                    "auc": "0.893494315987826"
+                                },
+                                "successMessage": "-[23-Jan-2019 15:54:51]-: # Completed in 19.03s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD019_PC3_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.716163159307241",
+                                    "secs": "6758",
+                                    "auc": "0.882252872566275"
+                                },
+                                "successMessage": "-[23-Jan-2019 15:55:20]-: # Completed in 18.99s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-23T15:55:33.185Z",
+                "scoreCardId": 30001852,
+                "id": "8b583a71-00ca-4779-b4ab-673461bff40f",
+                "isPassing": true,
+                "updated": "2019-01-23T15:55:33.185Z"
+            }
+        ],
+        "id": "1aaf15c3-c7f2-4005-bd79-ddf3dad701bb",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T15:47:19.430Z",
+        "fileType": "zip",
+        "memberId": 8547899
+    },
+    {
+        "updatedBy": "lazybaer",
+        "created": "2019-01-22T15:56:42.888Z",
+        "legacySubmissionId": 206597,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/230e5f06-740b-4c20-bdd6-dee0519f8838.zip",
+        "challengeId": 30054625,
+        "createdBy": "lazybaer",
+        "review": [
+            {
+                "score": 23.62432,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "60679",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[22-Jan-2019 19:09:46]-: # Completed in 18.62s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.49222869182254",
+                                    "secs": "56680",
+                                    "auc": "0.849990821888528"
+                                },
+                                "successMessage": "-[22-Jan-2019 19:10:15]-: # Completed in 18.28s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "reviewerId": "022a0dad-0cd4-48c7-b77f-60fd0302ac27",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T19:10:31.114Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "90743803-fd68-4f8f-9653-edabe2b8ba47",
+                "updated": "2019-01-22T19:10:31.114Z"
+            },
+            {
+                "score": 22.44847,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "58347",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[22-Jan-2019 18:59:43]-: # Completed in 18.85s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.49222869182254",
+                                    "secs": "56934",
+                                    "auc": "0.849990821888528"
+                                },
+                                "successMessage": "-[22-Jan-2019 19:00:12]-: # Completed in 18.10s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "reviewerId": "61241f43-9c99-486b-ad2e-914dba7e7771",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T19:00:27.303Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "0c2067bb-a115-4d23-b828-6a28c50e6d0e",
+                "updated": "2019-01-22T19:00:27.303Z"
+            },
+            {
+                "score": 0,
+                "metadata": {
+                    "testType": "provisional"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "reviewerId": "9a8e632c-1c8d-4f9e-8164-5ec4ea6d9ce0",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T18:52:12.465Z",
+                "scoreCardId": 30001031,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "b4b35858-3da0-4a94-a953-151298749cb0",
+                "updated": "2019-01-22T18:52:12.465Z"
+            },
+            {
+                "score": 22.42149,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "58839",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[22-Jan-2019 16:35:53]-: # Completed in 18.68s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.49222869182254",
+                                    "secs": "57479",
+                                    "auc": "0.849990821888528"
+                                },
+                                "successMessage": "-[22-Jan-2019 16:36:23]-: # Completed in 18.90s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "reviewerId": "00bedf13-b5ed-4670-a37c-4a51356f3508",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T16:36:38.803Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "b4d57c7c-20ef-4ac4-9fc4-872ef9efb651",
+                "updated": "2019-01-22T16:36:38.803Z"
+            },
+            {
+                "score": 22.395889999999998,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "59088",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[22-Jan-2019 15:59:42]-: # Completed in 18.91s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.49222869182254",
+                                    "secs": "58398",
+                                    "auc": "0.849990821888528"
+                                },
+                                "successMessage": "-[22-Jan-2019 16:00:11]-: # Completed in 18.10s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "reviewerId": "2577b865-77fd-4096-aed6-01d6197c0c09",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-22T16:00:27.031Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "b1dc45fb-3d35-4e76-b9b2-7c608ece4337",
+                "updated": "2019-01-22T16:00:27.031Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "ab688aba-4311-4ceb-a5b4-36fc27068f8d",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-22T15:56:50.470Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "e30fc590-b204-45d0-9a90-7b6046961c02",
+                "updated": "2019-01-22T15:56:50.470Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 28.278209999999998,
+                "metadata": {
+                    "testType": "system",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP003_PC3_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.666517193003293",
+                                    "secs": "60679",
+                                    "auc": "0.874111279055992"
+                                },
+                                "successMessage": "-[23-Jan-2019 15:58:27]-: # Completed in 18.84s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD019_PC3_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.661622868379067",
+                                    "secs": "59844",
+                                    "auc": "0.845804692848038"
+                                },
+                                "successMessage": "-[23-Jan-2019 15:58:58]-: # Completed in 19.42s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-23T15:59:10.548Z",
+                "scoreCardId": 30001852,
+                "id": "9f784849-6b2d-4876-a73b-b665bce97b6f",
+                "isPassing": true,
+                "updated": "2019-01-23T15:59:10.548Z"
+            }
+        ],
+        "id": "230e5f06-740b-4c20-bdd6-dee0519f8838",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-22T15:56:42.888Z",
+        "fileType": "zip",
+        "memberId": 23225544
+    },
+    {
+        "updatedBy": "mess",
+        "created": "2019-01-23T17:22:20.942Z",
+        "legacySubmissionId": 206600,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/144ab885-60f8-4ef6-badb-c8bbe12e804c.zip",
+        "challengeId": 30054625,
+        "createdBy": "mess",
+        "review": [
+            {
+                "score": 23.62432,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "149958",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[23-Jan-2019 17:28:01]-: # Completed in 20.00s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "139082",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[23-Jan-2019 17:28:31]-: # Completed in 18.97s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "144ab885-60f8-4ef6-badb-c8bbe12e804c",
+                "reviewerId": "a4aa00d1-0056-4b6e-97c0-1bcca5797ce3",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-23T17:28:46.436Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "94e6bce4-b377-44ba-8f11-d6205d72b08f",
+                "updated": "2019-01-23T17:28:46.436Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "fb2ab019-615e-47b7-a0fc-3d73115cb171",
+                "submissionId": "144ab885-60f8-4ef6-badb-c8bbe12e804c",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-23T17:22:29.068Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "ca8bab85-410b-4f3a-9c40-4d44b67b8a97",
+                "updated": "2019-01-23T17:22:29.068Z"
+            }
+        ],
+        "id": "144ab885-60f8-4ef6-badb-c8bbe12e804c",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-23T17:22:20.942Z",
+        "fileType": "zip",
+        "memberId": 305384
+    },
+    {
+        "updatedBy": "KriegBaer",
+        "created": "2019-01-25T14:13:43.989Z",
+        "legacySubmissionId": 206633,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/7e9d0d15-20fc-4e5f-8bc0-6349f8cccdc4.zip",
+        "challengeId": 30054625,
+        "createdBy": "KriegBaer",
+        "review": [
+            {
+                "score": 23.75234,
+                "metadata": {
+                    "testType": "provisional",
+                    "testCasesRun": [
+                        {
+                            "DPK.CP002_MCF7_24H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.731652731492968",
+                                    "secs": "147924",
+                                    "auc": "0.913798314298866"
+                                },
+                                "successMessage": "-[25-Jan-2019 14:19:19]-: # Completed in 19.73s\n"
+                            }
+                        },
+                        {
+                            "LITMUS.KD018_MCF7_96H_X1_B42": {
+                                "scoring": {
+                                    "cor": "0.532769775915714",
+                                    "secs": "136286",
+                                    "auc": "0.879459810858588"
+                                },
+                                "successMessage": "-[25-Jan-2019 14:19:50]-: # Completed in 19.63s\n"
+                            }
+                        }
+                    ]
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "7e9d0d15-20fc-4e5f-8bc0-6349f8cccdc4",
+                "reviewerId": "271b0325-9256-42c8-a83a-6282d4b8bec6",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-01-25T14:20:05.616Z",
+                "scoreCardId": 30001852,
+                "typeId": "bcf2b43b-20df-44d1-afd3-7fc9798dfcae",
+                "id": "1c6dfd96-31f5-4338-b251-df359081fd5e",
+                "updated": "2019-01-25T14:20:05.616Z"
+            },
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "544b3f63-bcd7-47e5-8957-9097c6370885",
+                "submissionId": "7e9d0d15-20fc-4e5f-8bc0-6349f8cccdc4",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-25T14:13:51.871Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "129c12c7-91d9-4e71-bf47-93dcc6e65df0",
+                "updated": "2019-01-25T14:13:51.871Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 23.8,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "submissionId": "7e9d0d15-20fc-4e5f-8bc0-6349f8cccdc4",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-01-25T14:20:11.046Z",
+                "scoreCardId": 30001031,
+                "id": "56f538ab-8f5f-45a1-a74b-b967dfc5d240",
+                "isPassing": false,
+                "updated": "2019-01-25T14:20:11.046Z"
+            }
+        ],
+        "id": "7e9d0d15-20fc-4e5f-8bc0-6349f8cccdc4",
+        "submissionPhaseId": 764158,
+        "updated": "2019-01-25T14:13:43.989Z",
+        "fileType": "zip",
+        "memberId": 40051753
+    },
+    {
+        "updatedBy": "TonyJ",
+        "created": "2019-02-19T06:10:16.571Z",
+        "legacySubmissionId": 206803,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/4da9d188-c5f8-4e1b-91d8-e8bd072aa1e5.zip",
+        "challengeId": 30054625,
+        "createdBy": "TonyJ",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "5f0d1bfe-4590-48f5-a52b-fab3148fd037",
+                "submissionId": "4da9d188-c5f8-4e1b-91d8-e8bd072aa1e5",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-02-19T06:10:24.032Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "18425435-42a7-4777-a009-d47904746014",
+                "updated": "2019-02-19T06:10:24.032Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "metadata": {
+                    "testType": "system"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "4da9d188-c5f8-4e1b-91d8-e8bd072aa1e5",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-02-19T06:10:29.227Z",
+                "scoreCardId": 30001852,
+                "id": "512021d1-e5d9-4654-ac4f-005169fdc6c4",
+                "isPassing": true,
+                "updated": "2019-02-19T06:10:29.227Z"
+            }
+        ],
+        "id": "4da9d188-c5f8-4e1b-91d8-e8bd072aa1e5",
+        "submissionPhaseId": 764158,
+        "updated": "2019-02-19T06:10:16.571Z",
+        "fileType": "zip",
+        "memberId": 8547899
+    },
+    {
+        "updatedBy": "TonyJ",
+        "created": "2019-02-19T06:51:16.370Z",
+        "legacySubmissionId": 206804,
+        "isFileSubmission": false,
+        "type": "Contest Submission",
+        "url": "https://s3.amazonaws.com/topcoder-dev-submissions/3b86afe2-5b44-4edd-8cf0-4e0ad234dc4b.zip",
+        "challengeId": 30054625,
+        "createdBy": "TonyJ",
+        "review": [
+            {
+                "score": 100,
+                "updatedBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "reviewerId": "d55e02f4-ac95-4a23-9cc1-a93e93633ef9",
+                "submissionId": "3b86afe2-5b44-4edd-8cf0-4e0ad234dc4b",
+                "createdBy": "maE2maBSv9fRVHjSlC31LFZSq6VhhZqC@clients",
+                "created": "2019-02-19T06:51:24.840Z",
+                "scoreCardId": 30001850,
+                "typeId": "68c5a381-c8ab-48af-92a7-7a869a4ee6c3",
+                "id": "506b55a8-6cff-488b-bffe-13d7fade00ca",
+                "updated": "2019-02-19T06:51:24.840Z"
+            }
+        ],
+        "reviewSummation": [
+            {
+                "aggregateScore": 0,
+                "metadata": {
+                    "testType": "system"
+                },
+                "updatedBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "submissionId": "3b86afe2-5b44-4edd-8cf0-4e0ad234dc4b",
+                "createdBy": "enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients",
+                "created": "2019-02-19T06:51:30.830Z",
+                "scoreCardId": 30001852,
+                "id": "a5e5d67c-5871-42c1-a663-2db42db1f934",
+                "isPassing": true,
+                "updated": "2019-02-19T06:51:30.830Z"
+            }
+        ],
+        "id": "3b86afe2-5b44-4edd-8cf0-4e0ad234dc4b",
+        "submissionPhaseId": 764158,
+        "updated": "2019-02-19T06:51:16.370Z",
+        "fileType": "zip",
+        "memberId": 8547899
+    }
+]
