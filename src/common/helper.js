@@ -85,6 +85,7 @@ const getM2Mtoken = async () => {
  * @returns {Promise} Promise of the response
  */
 const makeRequest = async (reqType, path, reqBody) => {
+  logger.info(`Calling: ${path}`)
   const token = await getM2Mtoken()
   logger.debug(`M2M Token: ${token}`)
   if (reqType === 'POST') {
