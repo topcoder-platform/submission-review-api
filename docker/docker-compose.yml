@@ -1,0 +1,7 @@
+version: '3'
+services:
+  submission-review-api:
+    image: submission-review-api:latest
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile
