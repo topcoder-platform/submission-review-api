@@ -38,7 +38,8 @@
     "morgan": "^1.7.0",
     "uuid": "^3.3.2",
     "winston": "^3.1.0",
-    "tc-core-library-js": "appirio-tech/tc-core-library-js.git#v2.4.1"
+    "tc-core-library-js": "appirio-tech/tc-core-library-js.git#v2.4.1",
+    "topcoder-healthcheck-dropin": "^1.0.3"
   },
   "standard": {
     "env": [
