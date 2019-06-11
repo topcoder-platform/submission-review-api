@@ -11,13 +11,20 @@ const _ = require('lodash')
 const cors = require('cors')
 const logger = require('./src/common/logger')
 const HttpStatus = require('http-status-codes')
+const healthCheck = require('topcoder-healthcheck-dropin')
 
 // setup express app
 const app = express()
 
+function check () {
+  // Return 200 OK for health check
+  return true
+}
+
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(healthCheck.middleware([check]))
 app.set('port', config.PORT)
 
 // Register routes
