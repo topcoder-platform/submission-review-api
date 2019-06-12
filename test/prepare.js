@@ -18,8 +18,6 @@ const { noResourceChallengeId,
   appealsPhaseChallengeId,
   completedChallengeId,
   f2fChallengeId,
-  mmChallengeId,
-  completedMmChallengeId,
   reviewTypes,
   resourcesResponse,
   submissionPhaseChallengeResponse,
@@ -27,20 +25,17 @@ const { noResourceChallengeId,
   appealsPhaseChallengeResponse,
   completedChallengeResponse,
   f2fChallengeResponse,
-  mmChallengeResponse,
-  completedMmChallengeResponse,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
   f2fSubmissions,
-  mmSubmissions,
   invalidChallengeIdSubmission,
   noResourceChallengeIdSubmission,
   artifactsResponse } = require('./testData')
 
 prepare(function (done) {
-  // Mock API
+  // Mock Posting to Bus API and ES interactions
   const authUrl = URL.parse(config.M2M.AUTH0_URL)
   const reviewTypesUrl = URL.parse(`${config.REVIEW_TYPE_API_URL}?&page=1&perPage=100`)
 
@@ -59,11 +54,6 @@ prepare(function (done) {
 
       if (path.indexOf('submissions?challengeId=') !== -1 && path.indexOf(f2fChallengeId) !== -1) {
         return 'f2fSubmissions'
-      }
-
-      if (path.indexOf('submissions?challengeId=') !== -1 &&
-            (path.indexOf(mmChallengeId) !== -1 || path.indexOf(completedMmChallengeId) !== -1)) {
-        return 'mmSubmissions'
       }
 
       if (path.indexOf('submissions?challengeId=') !== -1 && path.indexOf(noResourceChallengeId) === -1) {
@@ -102,18 +92,12 @@ prepare(function (done) {
     .reply(200, completedChallengeResponse)
     .get(f2fChallengeId)
     .reply(200, f2fChallengeResponse)
-    .get(mmChallengeId)
-    .reply(200, mmChallengeResponse)
-    .get(completedMmChallengeId)
-    .reply(200, completedMmChallengeResponse)
     .get('noSubmissions')
     .reply(200, [])
     .get('subPhaseSubmissions')
     .reply(200, subPhaseSubmissions)
     .get('f2fSubmissions')
     .reply(200, f2fSubmissions)
-    .get('mmSubmissions')
-    .reply(200, mmSubmissions)
     .get(reviewTypesUrl.path)
     .reply(200, reviewTypes)
     .get(subPhaseSubmissions[0].id)

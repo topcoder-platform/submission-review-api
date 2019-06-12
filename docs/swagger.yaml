@@ -44,10 +44,9 @@ paths:
     get:
       description: >
         Retrieve a summary of submissions for the given challenge.
-        The provisionalScore, finalScore, provisionalRank, finalRank will be populated if
-        the challenge is MM challenge and current user has full access to the challenge.
 
-        **Authorization:** This endpoint is accessible by roles user, manager, admin copilot, observer, client manager
+        **Authorization:** This endpoint is accessible by roles user, admin and
+        copilot
       security:
         - bearer: []
       produces:
@@ -272,10 +271,6 @@ definitions:
         type: string
       memberHandle:
         type: string
-      provisionalRank:
-        type: integer
-      finalRank:
-        type: integer
       submissions:
         type: array
         items:
@@ -295,12 +290,6 @@ definitions:
         example: '2018-05-20T07:00:30.123Z'
       reviewSummation:
         $ref: '#/definitions/ReviewSummation'
-      provisionalScore:
-        type: number
-        example: 88.8
-      finalScore:
-        type: number
-        example: 100
   ReviewSummation:
     description: The review summation entity.
     type: object
