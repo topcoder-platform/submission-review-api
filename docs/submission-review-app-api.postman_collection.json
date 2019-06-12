@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2887d533-92eb-446b-be89-b9871eb05778",
+		"_postman_id": "a737b30a-6321-4142-95eb-ff8e31f6dae5",
 		"name": "submission-review-app-api",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -9,7 +9,7 @@
 			"name": "challenge submissions",
 			"item": [
 				{
-					"name": "get challenge submissions MM challenge",
+					"name": "get challenge submissions MM challenge by admin",
 					"event": [
 						{
 							"listen": "test",
@@ -64,8 +64,117 @@
 									"value": "30054625"
 								}
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get challenge submissions MM challenge by submitter",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46ab87c1-c536-46f2-9b6d-3cac357e36d7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{KriegBaer_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
 						},
-						"description": "reviews data is not support for Code challenge right now"
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions?challengeId=30054625",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions"
+							],
+							"query": [
+								{
+									"key": "challengeId",
+									"value": "30054625"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get challenge submissions MM challenge by unregistered user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46ab87c1-c536-46f2-9b6d-3cac357e36d7",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "Bearer {{hohosky_token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/challengeSubmissions?challengeId=30054625",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"challengeSubmissions"
+							],
+							"query": [
+								{
+									"key": "challengeId",
+									"value": "30054625"
+								}
+							]
+						}
 					},
 					"response": []
 				},

@@ -17,10 +17,110 @@ const errors = require('../common/errors')
 const { UserRoles, SystemReviewers } = require('../../app-constants')
 
 /**
- * Get challenge submissions
+ * Get MM challenge full submissions results.
+ * @param {Object} challenge the challenge details
+ * @param {Array} resources the challenge resources
+ * @param {Array} submissions the challenge submissions
+ * @returns {Array} the MM challenge full submissions results
+ */
+async function getMMChallengeFullSubmissions (challenge, resources, submissions) {
+  // get review types
+  let reviewTypes
+  try {
+    reviewTypes = await fetchPaginated(`${config.REVIEW_TYPE_API_URL}?`)
+  } catch (e) {
+    throw new errors.NotFoundError(`Could not load review types.\n Details: ${_.get(e, 'message')}`)
+  }
+
+  // find MM review type ids, used to filter valid MM reviews
+  const mmReviewTypeIds = _.map(config.MM_REVIEW_TYPES, (typeName) => {
+    const reviewType = _.find(reviewTypes, (t) => t.name.toLowerCase() === typeName.toLowerCase())
+    if (!reviewType) {
+      throw new Error(`Can not find review type of name: ${typeName}`)
+    }
+    return reviewType.id
+  })
+
+  const results = {}
+  _.forEach(submissions, (submission) => {
+    // find valid MM reviews
+    const validReviews = _.filter(submission.review || [], (r) => _.includes(mmReviewTypeIds, r.typeId))
+    validReviews.sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime())
+    // find provisional score and final score
+    const provisionalScore = _.get(validReviews, '[0].score')
+    const finalScore = _.get(submission, 'reviewSummation[0].aggregateScore')
+
+    // group submissions by member id
+    if (!results[submission.memberId]) {
+      results[submission.memberId] = {
+        memberId: submission.memberId,
+        memberHandle: _.get(resources[submission.memberId], 'memberHandle'),
+        submissions: []
+      }
+    }
+    results[submission.memberId].submissions.push({
+      id: submission.id,
+      created: submission.created,
+      legacySubmissionId: submission.legacySubmissionId,
+      reviewSummation: _.get(submission, 'reviewSummation[0]'),
+      provisionalScore,
+      finalScore
+    })
+  })
+  const records = _.map(results, r => r)
+
+  // populate provisional ranks
+  records.sort((a, b) => {
+    const psa = _.get(a, 'submissions[0].provisionalScore', -1)
+    const psb = _.get(b, 'submissions[0].provisionalScore', -1)
+
+    if (psa !== psb) {
+      return psb - psa
+    }
+
+    // provisional scores are the same, then use created time to break the tie
+    // earlier submission will get higher rank
+    const ta = _.get(a, 'submissions[0].created')
+    const tb = _.get(b, 'submissions[0].created')
+    return new Date(ta).getTime() - new Date(tb).getTime()
+  })
+  _.forEach(records, (record, i) => {
+    record.provisionalRank = i + 1
+  })
+
+  // populate final ranks only after completion of review phase
+  if (!challenge.isSubmitPhase && !challenge.isReviewPhase) {
+    records.sort((a, b) => {
+      // first check final scores
+      const fsa = _.get(a, 'submissions[0].finalScore', -1)
+      const fsb = _.get(b, 'submissions[0].finalScore', -1)
+
+      if (fsa !== fsb) {
+        return fsb - fsa
+      }
+
+      // final scores are same, then use created time to break the tie
+      // earlier submission will get higher rank
+      const ta = _.get(a, 'submissions[0].created')
+      const tb = _.get(b, 'submissions[0].created')
+      return new Date(ta).getTime() - new Date(tb).getTime()
+    })
+    _.forEach(records, (record, i) => {
+      record.finalRank = i + 1
+    })
+  }
+
+  return records
+}
+
+/**
+ * Get challenge submissions.
+ * The provisionalScore, finalScore, provisionalRank, finalRank will be populated if
+ * the challenge is MM challenge and current user has full access to the challenge.
+ *
  * @param {Object} currentUser the current user
  * @param {String} challengeId the challenge id
- * @returns {Object} the challenge submissions
+ * @returns {Array} the challenge submissions
  */
 async function getChallengeSubmissions (currentUser, challengeId) {
   let submissions
@@ -66,23 +166,28 @@ async function getChallengeSubmissions (currentUser, challengeId) {
     return (new Date(b.created).getTime()) - (new Date(a.created).getTime())
   })
 
+  // In Marathon match, Submission scores are accessible to everyone
+  if (challenge.isMM) {
+    return getMMChallengeFullSubmissions(challenge, resources, submissions)
+  }
+
   const results = {}
   _.each(submissions, (submission) => {
-    let inlcudeSubmission = true
+    let includeSubmission = true
     // Access checks
     if (isSubmitter && submission.memberId.toString() !== currentUser.userId.toString()) {
       // Return all submission if the appeals response phase has ended
       if (!challenge.appealResponseEnded) {
-        inlcudeSubmission = false
+        includeSubmission = false
       }
     }
 
     // Reviewer doesn't have access to submissions during submission phase except F2F
     if (isReviewer && challenge.isSubmitPhase && !challenge.isF2F) {
-      inlcudeSubmission = false
+      includeSubmission = false
     }
 
-    if (inlcudeSubmission === true) {
+    if (includeSubmission === true) {
       if (!results[submission.memberId]) {
         results[submission.memberId] = {
           ...(challenge.appealResponseEnded || hasFullAccess ? {
