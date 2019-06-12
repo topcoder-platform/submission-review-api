@@ -10,9 +10,6 @@ const reviewPhaseChallengeId = 30049361
 const appealsPhaseChallengeId = 30049362
 const completedChallengeId = 30049363
 const f2fChallengeId = 30049364
-const mmChallengeId = 30049365
-const completedMmChallengeId = 30049366
-const mmSubmissions = require('./mmChallengeData.json')
 
 const resourcesResponse = {
   'id': '-7afbdf6f:168c51fa14f:-7a2e',
@@ -623,7 +620,8 @@ const f2fChallengeResponse = {
           'status': 'Open',
           'scheduledStartTime': '2019-03-06T09:49:22Z',
           'actualStartTime': '2019-03-06T09:49:22Z',
-          'scheduledEndTime': '2019-03-13T08:49:00Z'
+          'scheduledEndTime': '2019-03-13T08:49:00Z',
+          'actualEndTime': null
         },
         {
           'type': 'Iterative Review',
@@ -638,177 +636,16 @@ const f2fChallengeResponse = {
           'status': 'Open',
           'scheduledStartTime': '2019-03-06T10:05:38Z',
           'actualStartTime': '2019-03-06T10:05:38Z',
-          'scheduledEndTime': '2019-03-13T09:00:00Z'
+          'scheduledEndTime': '2019-03-13T09:00:00Z',
+          'actualEndTime': null
         },
         {
           'type': 'Iterative Review',
           'status': 'Open',
           'scheduledStartTime': '2019-03-08T03:52:19Z',
           'actualStartTime': '2019-03-08T03:52:19Z',
-          'scheduledEndTime': '2019-03-08T04:47:01Z'
-        }
-      ],
-      'submissions': [],
-      'checkpoints': [],
-      'numberOfRegistrants': 9,
-      'numberOfSubmissions': 4,
-      'numberOfCheckpointSubmissions': 0
-    }
-  },
-  'version': 'v3'
-}
-
-const mmChallengeResponse = {
-  'id': '-2e28b0da:1692713635f:-3c2',
-  'result': {
-    'success': true,
-    'status': 200,
-    'metadata': null,
-    'content': {
-      'subTrack': 'DEVELOP_MARATHON_MATCH',
-      'challengeTitle': 'some MM challenge',
-      'challengeId': mmChallengeId,
-      'projectId': 18809,
-      'forumId': 62528,
-      'detailedRequirements': 'MM',
-      'screeningScorecardId': null,
-      'reviewScorecardId': '30001600',
-      'cmcTaskId': '',
-      'numberOfCheckpointsPrizes': 0,
-      'topCheckPointPrize': '',
-      'postingDate': '2019-03-06T09:49:22Z',
-      'registrationEndDate': '2019-03-13T08:49:00Z',
-      'checkpointSubmissionEndDate': null,
-      'submissionEndDate': '2019-03-13T09:00:00Z',
-      'reviewType': 'INTERNAL',
-      'environment': null,
-      'codeRepo': null,
-      'forumLink': 'https://apps.topcoder.com/forums/?module=Category&categoryID=62528',
-      'appealsEndDate': '2019-03-09T04:47:00Z',
-      'finalFixEndDate': null,
-      'currentStatus': 'Active',
-      'digitalRunPoints': null,
-      'challengeCommunity': 'develop',
-      'directUrl': 'https://www.topcoder.com/direct/contest/detail.action?projectId=30085488',
-      'technology': [
-        'Angular 2+',
-        ' CSS',
-        ' JavaScript'
-      ],
-      'prize': [
-        100
-      ],
-      'currentPhaseName': 'Registration',
-      'currentPhaseRemainingTime': 441264,
-      'currentPhaseEndDate': '2019-03-13T08:49:00Z',
-      'platforms': [
-        'HTML'
-      ],
-      'phases': [
-        {
-          'type': 'Registration',
-          'status': 'Closed',
-          'scheduledStartTime': '2019-03-06T09:49:22Z',
-          'actualStartTime': '2019-03-06T09:49:22Z',
-          'scheduledEndTime': '2019-03-13T08:49:00Z',
-          'actualEndTime': '2019-03-13T08:49:00Z'
-        },
-        {
-          'type': 'Submission',
-          'status': 'Closed',
-          'scheduledStartTime': '2019-03-06T10:05:38Z',
-          'actualStartTime': '2019-03-06T10:05:38Z',
-          'scheduledEndTime': '2019-03-13T09:00:00Z',
-          'actualEndTime': '2019-03-13T08:49:00Z'
-        },
-        {
-          'type': 'Review',
-          'status': 'Open',
-          'scheduledStartTime': '2019-03-08T03:52:19Z',
-          'actualStartTime': '2019-03-08T03:52:19Z',
-          'scheduledEndTime': '2019-03-08T04:47:01Z'
-        }
-      ],
-      'submissions': [],
-      'checkpoints': [],
-      'numberOfRegistrants': 9,
-      'numberOfSubmissions': 4,
-      'numberOfCheckpointSubmissions': 0
-    }
-  },
-  'version': 'v3'
-}
-
-const completedMmChallengeResponse = {
-  'id': '-2e28b0da:1692713635f:-3c2',
-  'result': {
-    'success': true,
-    'status': 200,
-    'metadata': null,
-    'content': {
-      'subTrack': 'DEVELOP_MARATHON_MATCH',
-      'challengeTitle': 'some MM challenge',
-      'challengeId': completedMmChallengeId,
-      'projectId': 18809,
-      'forumId': 62528,
-      'detailedRequirements': 'MM',
-      'screeningScorecardId': null,
-      'reviewScorecardId': '30001600',
-      'cmcTaskId': '',
-      'numberOfCheckpointsPrizes': 0,
-      'topCheckPointPrize': '',
-      'postingDate': '2019-03-06T09:49:22Z',
-      'registrationEndDate': '2019-03-13T08:49:00Z',
-      'checkpointSubmissionEndDate': null,
-      'submissionEndDate': '2019-03-13T09:00:00Z',
-      'reviewType': 'INTERNAL',
-      'environment': null,
-      'codeRepo': null,
-      'forumLink': 'https://apps.topcoder.com/forums/?module=Category&categoryID=62528',
-      'appealsEndDate': '2019-03-09T04:47:00Z',
-      'finalFixEndDate': null,
-      'currentStatus': 'Completed',
-      'digitalRunPoints': null,
-      'challengeCommunity': 'develop',
-      'directUrl': 'https://www.topcoder.com/direct/contest/detail.action?projectId=30085488',
-      'technology': [
-        'Angular 2+',
-        ' CSS',
-        ' JavaScript'
-      ],
-      'prize': [
-        100
-      ],
-      'currentPhaseName': 'Registration',
-      'currentPhaseRemainingTime': 441264,
-      'currentPhaseEndDate': '2019-03-13T08:49:00Z',
-      'platforms': [
-        'HTML'
-      ],
-      'phases': [
-        {
-          'type': 'Registration',
-          'status': 'Closed',
-          'scheduledStartTime': '2019-03-06T09:49:22Z',
-          'actualStartTime': '2019-03-06T09:49:22Z',
-          'scheduledEndTime': '2019-03-13T08:49:00Z',
-          'actualEndTime': '2019-03-13T08:49:00Z'
-        },
-        {
-          'type': 'Submission',
-          'status': 'Closed',
-          'scheduledStartTime': '2019-03-06T10:05:38Z',
-          'actualStartTime': '2019-03-06T10:05:38Z',
-          'scheduledEndTime': '2019-03-13T09:00:00Z',
-          'actualEndTime': '2019-03-13T08:49:00Z'
-        },
-        {
-          'type': 'Review',
-          'status': 'Closed',
-          'scheduledStartTime': '2019-03-08T03:52:19Z',
-          'actualStartTime': '2019-03-08T03:52:19Z',
           'scheduledEndTime': '2019-03-08T04:47:01Z',
-          'actualEndTime': '2019-03-08T04:47:01Z'
+          'actualEndTime': null
         }
       ],
       'submissions': [],
@@ -1171,21 +1008,6 @@ const reviewTypes = [
     'isActive': true
   },
   {
-    'name': 'NNSA-MMScorer',
-    'id': '7186ac08-b27f-40e2-a12a-764ba0368a79',
-    'isActive': true
-  },
-  {
-    'name': 'MM110-Scorer',
-    'id': '7286ac08-b27f-40e2-a12a-764ba0368a79',
-    'isActive': true
-  },
-  {
-    'name': 'MM-CMap Scorer',
-    'id': 'bcf2b43b-20df-44d1-afd3-7fc9798dfcae',
-    'isActive': true
-  },
-  {
     'name': 'Iterative Review',
     'id': 'c56a4180-65aa-42ec-a945-5fd21dec0505',
     'isActive': true
@@ -1384,22 +1206,17 @@ module.exports = {
   appealsPhaseChallengeId,
   completedChallengeId,
   f2fChallengeId,
-  mmChallengeId,
-  completedMmChallengeId,
   resourcesResponse,
   submissionPhaseChallengeResponse,
   reviewPhaseChallengeResponse,
   appealsPhaseChallengeResponse,
   completedChallengeResponse,
   f2fChallengeResponse,
-  mmChallengeResponse,
-  completedMmChallengeResponse,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
   f2fSubmissions,
-  mmSubmissions,
   reviewTypes,
   adminToken,
   admin,

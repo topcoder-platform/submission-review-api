@@ -18,7 +18,5 @@ module.exports = {
     TOKEN_CACHE_TIME: process.env.TOKEN_CACHE_TIME || 90,
     AUTH0_CLIENT_ID: process.env.AUTH0_CLIENT_ID || 'enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B',
     AUTH0_CLIENT_SECRET: process.env.AUTH0_CLIENT_SECRET || '6wzC0_gfeuM4yEWOoobl5BylXsI44lczJjGTBABM2EJpbg9zucUwTGlgO7WWbHdt'
-  },
-  // MM review type names, used to filter valid MM reviews
-  MM_REVIEW_TYPES: process.env.MM_REVIEW_TYPES ? process.env.MM_REVIEW_TYPES.split(',') : ['MM', 'NNSA-MMScorer', 'MM110-Scorer', 'MM-CMap Scorer']
+  }
 }

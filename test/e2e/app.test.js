@@ -12,7 +12,7 @@ const chaiHttp = require('chai-http')
 const app = require('../../app')
 const logger = require('../../src/common/logger')
 
-const should = chai.should()
+chai.should()
 chai.use(chaiHttp)
 chai.use(require('chai-as-promised'))
 
@@ -26,8 +26,6 @@ const { invalidChallengeId,
   appealsPhaseChallengeId,
   completedChallengeId,
   f2fChallengeId,
-  mmChallengeId,
-  completedMmChallengeId,
   adminToken,
   submitter1Token,
   submitter2Token,
@@ -70,165 +68,6 @@ describe('Submission Review API tests', () => {
    * Test GET /challengeSubmissions route
    */
   describe('GET /challengeSubmissions', () => {
-    describe('Tests related to MM challenge', () => {
-      it('Admin will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('Observer will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${observerToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('Manager will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${managerToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('Copilot will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${copilotToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('Client Manager will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${clientManagerToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('User who has not registered will not have access to any submission', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${nonSubmitterToken}`)
-        response.status.should.be.eql(403)
-        response.body.message.should.be.eql(`You don't have access to this challenge!`)
-      })
-
-      it('Submitter will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${submitter1Token}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('Reviewer will have access to scores of all submissions of marathon match', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${reviewerToken}`)
-        response.body.should.be.an('array')
-        response.body.length.should.be.eql(5)
-        errorLogs.should.be.empty
-      })
-
-      it('For MM Challenge in Review phase, only provisional rank will be present and will be ordered by provisional rank', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        for (const submission of submissions) {
-          submission.should.have.property('provisionalRank')
-          submission.should.not.have.property('finalRank')
-        }
-        submissions[0].provisionalRank.should.be.eql(1)
-        submissions[1].provisionalRank.should.be.eql(2)
-        submissions[0].submissions[0].provisionalScore.should.be.gt(submissions[1].submissions[0].provisionalScore)
-        errorLogs.should.be.empty
-      })
-
-      it('For completed MM Challenge, both final and provisional rank will be present and will be ordered by final rank', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${completedMmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        for (const submission of submissions) {
-          submission.should.have.property('provisionalRank')
-          submission.should.have.property('finalRank')
-        }
-        submissions[0].finalRank.should.be.eql(1)
-        submissions[1].finalRank.should.be.eql(2)
-        submissions[0].submissions[0].finalScore.should.be.gt(submissions[1].submissions[0].finalScore)
-        errorLogs.should.be.empty
-      })
-
-      it('When provisional scores are same, earlier submission will get higher rank', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        submissions[1].provisionalRank.should.be.eql(2)
-        submissions[2].provisionalRank.should.be.eql(3)
-        submissions[1].submissions[0].provisionalScore.should.be.eql(submissions[2].submissions[0].provisionalScore)
-        const firstDate = new Date(submissions[1].submissions[0].created)
-        const secondDate = new Date(submissions[2].submissions[0].created)
-        firstDate.should.be.lt(secondDate)
-        errorLogs.should.be.empty
-      })
-
-      it('When final scores are same, earlier submission will get higher rank', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${completedMmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        submissions[2].finalRank.should.be.eql(3)
-        submissions[3].finalRank.should.be.eql(4)
-        submissions[2].submissions[0].finalScore.should.be.eql(submissions[3].submissions[0].finalScore)
-        const firstDate = new Date(submissions[2].submissions[0].created)
-        const secondDate = new Date(submissions[3].submissions[0].created)
-        firstDate.should.be.lt(secondDate)
-        errorLogs.should.be.empty
-      })
-
-      it('In Ranking, 0 is greater than undefined', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${completedMmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        submissions[3].finalRank.should.be.eql(4)
-        submissions[4].finalRank.should.be.eql(5)
-        submissions[3].submissions[0].finalScore.should.be.eql(0)
-        should.not.exist(submissions[4].submissions[0].finalScore)
-        errorLogs.should.be.empty
-      })
-
-      it('When submission has multiple valid reviews, only latest review will be considered', async () => {
-        const response = await chai.request(app)
-          .get(`/challengeSubmissions?challengeId=${mmChallengeId}`)
-          .set('Authorization', `Bearer ${adminToken}`)
-        const submissions = response.body
-        submissions.length.should.be.eql(5)
-        submissions[2].provisionalRank.should.be.eql(3)
-        submissions[2].submissions[0].provisionalScore.should.be.eql(23.62432)
-        errorLogs.should.be.empty
-      })
-    })
-
     describe('Agnostic tests', () => {
       // TODO - Auth library should ideally return 401 instead of 403
       it('Getting challenge submissions without token should result in Unauthorized error', async () => {
