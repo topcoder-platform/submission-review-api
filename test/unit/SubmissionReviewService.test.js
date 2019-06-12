@@ -199,7 +199,7 @@ describe('Submission Review Service tests', () => {
       it('Challenge without resource details should have error related to challenge resources in logs', async () => {
         await service.getChallengeSubmissions(admin, noResourceChallengeId).should.be.rejected
         errorLogs.should.not.be.empty
-        errorLogs[0].should.have.string(`Could not load challenge resources`)
+        errorLogs[1].should.have.string(`Could not load challenge resources`)
       })
 
       it('Challenge with no submission should return empty array', async () => {

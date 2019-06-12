@@ -268,7 +268,7 @@ describe('Submission Review API tests', () => {
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(404)
         errorLogs.should.not.be.empty
-        errorLogs[0].should.have.string(`Could not load challenge resources`)
+        errorLogs[1].should.have.string(`Could not load challenge resources`)
       })
 
       it('Challenge with no submission should return empty array', async () => {

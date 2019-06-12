@@ -85,17 +85,20 @@ const getM2Mtoken = async () => {
  * @returns {Promise} Promise of the response
  */
 const makeRequest = async (reqType, path, reqBody) => {
+  logger.info(`Calling: ${path}`)
   const token = await getM2Mtoken()
   logger.debug(`M2M Token: ${token}`)
   if (reqType === 'POST') {
     return request
       .post(path)
+      .timeout(1000 * 60) // TODO: remove this. 60 sec is a rediculous timeout
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
       .send(reqBody)
   } else if (reqType === 'GET') {
     return request
       .get(path)
+      .timeout(1000 * 60) // TODO: remove this. 60 sec is a rediculous timeout
       .set('Authorization', `Bearer ${token}`)
       .set('Content-Type', 'application/json')
   }
