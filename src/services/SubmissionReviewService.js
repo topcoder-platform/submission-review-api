@@ -87,7 +87,8 @@ async function getChallengeSubmissions (currentUser, challengeId) {
         results[submission.memberId] = {
           ...(challenge.appealResponseEnded || hasFullAccess ? {
             ..._.pick(submission, [
-              'memberId'
+              'memberId',
+              'type'
             ]),
             memberHandle: _.get(resources[submission.memberId], 'memberHandle')
           } : {}),
