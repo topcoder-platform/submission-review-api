@@ -47,7 +47,7 @@ async function getChallengeSubmissions (currentUser, challengeId) {
   }
 
   try {
-    submissions = await fetchPaginated(`${config.SUBMISSION_API_URL}?challengeId=${challengeId}&type=${config.SUBMISSION_TYPE}`)
+    submissions = await fetchPaginated(`${config.SUBMISSION_API_URL}?challengeId=${challengeId}`)
   } catch (e) {
     logger.error(e)
     throw new errors.NotFoundError(`Could not load challenge submissions.\n Details: ${_.get(e, 'message')}`)
