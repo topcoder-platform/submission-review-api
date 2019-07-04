@@ -40,7 +40,8 @@ const { invalidChallengeId,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
-  completedChallengeSubmissions } = require('../testData')
+  completedChallengeSubmissions,
+  artifactsResponse } = require('../testData')
 
 describe('Submission Review API tests', () => {
   const errorLogs = []
@@ -106,7 +107,7 @@ describe('Submission Review API tests', () => {
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(404)
         errorLogs.should.not.be.empty
-        errorLogs[0].should.have.string(`Could not load challenge resources`)
+        errorLogs[1].should.have.string(`Could not load challenge resources`)
       })
 
       it('Challenge with no submission should return empty array', async () => {
@@ -1145,6 +1146,744 @@ describe('Submission Review API tests', () => {
       it('Reviewer will have access to all submissions after appeals response closure', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/download`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+    })
+  })
+
+  /*
+   * Test GET /challengeSubmissions/:submissionId/artifacts route
+   */
+  describe('GET /challengeSubmissions/:submissionId/artifacts', () => {
+    describe('Agnostic tests', () => {
+      // TODO - Auth library should ideally return 401 instead of 403
+      it('Getting submission reviews without token should result in Unauthorized error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+        response.status.should.be.eql(403)
+        response.body.result.content.message.should.be.eql('No token provided.')
+      })
+
+      it('Getting challenge submissions with invalid token should result in Unauthorized error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer testing`)
+        response.status.should.be.eql(403)
+        response.body.result.content.message.should.be.eql('Invalid Token.')
+      })
+
+      it('Invalid Submission ID should be rejected with could not load submission error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/abcd-def/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain('Could not load submission.')
+      })
+
+      it('Submission with Invalid Challenge should be rejected with could not load challenge error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${invalidChallengeIdSubmission.id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain(`Could not load challenge: ${invalidChallengeId}`)
+      })
+
+      it('Submission with Invalid Challenge resources should be rejected with could not load challenge resources error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${noResourceChallengeIdSubmission.id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain('Could not load challenge resources')
+      })
+    })
+
+    describe('Tests related to submission phase checks', () => {
+      it('Admin have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during submission phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should not have access to submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+    })
+
+    describe('Tests related to review phase checks', () => {
+      it('Admin have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during review phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should have access to submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+      })
+    })
+
+    describe('Tests related to appeals phase checks', () => {
+      it('Admin have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during appeals phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should have access to submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+      })
+    })
+
+    describe('Tests related to appeals response closure checks', () => {
+      it('Admin have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to all submissions after appeals response closure ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[1].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+
+      it('Reviewer will have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.body.artifacts.length.should.be.eql(2)
+        errorLogs.should.be.empty
+      })
+    })
+  })
+
+  /*
+   * Test GET /challengeSubmissions/:submissionId/artifacts/:artifactId/download route
+   */
+  describe('GET /challengeSubmissions/:submissionId/artifacts/:artifactId/download', () => {
+    describe('Agnostic tests', () => {
+      // TODO - Auth library should ideally return 401 instead of 403
+      it('Getting submission reviews without token should result in Unauthorized error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+        response.status.should.be.eql(403)
+        response.body.result.content.message.should.be.eql('No token provided.')
+      })
+
+      it('Getting challenge submissions with invalid token should result in Unauthorized error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer testing`)
+        response.status.should.be.eql(403)
+        response.body.result.content.message.should.be.eql('Invalid Token.')
+      })
+
+      it('Invalid Submission ID should be rejected with could not load submission error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/abcd-def/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain('Could not load submission.')
+      })
+
+      it('Submission with Invalid Challenge should be rejected with could not load challenge error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${invalidChallengeIdSubmission.id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain(`Could not load challenge: ${invalidChallengeId}`)
+      })
+
+      it('Submission with Invalid Challenge resources should be rejected with could not load challenge resources error', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${noResourceChallengeIdSubmission.id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(404)
+        response.body.message.should.contain('Could not load challenge resources')
+      })
+    })
+
+    describe('Tests related to submission phase checks', () => {
+      it('Admin have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during submission phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should not have access to submissions during submission phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+    })
+
+    describe('Tests related to review phase checks', () => {
+      it('Admin have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during review phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should have access to submissions during review phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+      })
+    })
+
+    describe('Tests related to appeals phase checks', () => {
+      it('Admin have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to his own submission during appeals phase ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will not have access to other member submission during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain('You are not allowed to download artifacts of this submission')
+      })
+
+      it('Reviewer should have access to submissions during appeals phase', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${reviewerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+      })
+    })
+
+    describe('Tests related to appeals response closure checks', () => {
+      it('Admin have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${adminToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Observer have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${observerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${managerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Copilot have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${copilotToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Client Manager have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${clientManagerToken}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('User who has not registered will not have access to any submission', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${nonSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.body.message.should.be.contain(`You don't have access to this challenge!`)
+      })
+
+      it('Submitter will have access to all submissions after appeals response closure ', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[1].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter1Token}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Registered User with no submission will have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${submitter3Token}`)
+        response.status.should.be.eql(200)
+        response.text.should.be.eql('download')
+        errorLogs.should.be.empty
+      })
+
+      it('Reviewer will have access to all submissions after appeals response closure', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
           .set('Authorization', `Bearer ${reviewerToken}`)
         response.status.should.be.eql(200)
         response.text.should.be.eql('download')

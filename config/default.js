@@ -11,7 +11,7 @@ module.exports = {
   CHALLENGE_API_URL: process.env.CHALLENGE_API_URL || 'https://api.topcoder-dev.com/v4/challenges',
   SUBMISSION_API_URL: process.env.SUBMISSION_API_URL || 'https://api.topcoder-dev.com/v5/submissions',
   REVIEW_SUMMATIONS_API_URL: process.env.REVIEW_SUMMATIONS_API_URL || 'https://api.topcoder-dev.com/v5/reviewSummations',
-  REVIEW_TYPE_API_URL: process.env.REVIEW_TYPE_API_URL || 'http://api.topcoder-dev.com/v5/reviewTypes',
+  REVIEW_TYPE_API_URL: process.env.REVIEW_TYPE_API_URL || 'https://api.topcoder-dev.com/v5/reviewTypes',
   M2M: {
     AUTH0_URL: process.env.AUTH0_URL || 'https://topcoder-dev.auth0.com/oauth/token',
     AUTH0_AUDIENCE: process.env.AUTH0_AUDIENCE || 'https://m2m.topcoder-dev.com/',

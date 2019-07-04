@@ -23,5 +23,19 @@ module.exports = {
       method: 'downloadSubmission',
       auth: 'jwt'
     }
+  },
+  '/challengeSubmissions/:submissionId/artifacts': {
+    get: {
+      controller: 'ArtifactController',
+      method: 'getSubmissionArtifacts',
+      auth: 'jwt'
+    }
+  },
+  '/challengeSubmissions/:submissionId/artifacts/:artifactId/download': {
+    get: {
+      controller: 'ArtifactController',
+      method: 'downloadArtifact',
+      auth: 'jwt'
+    }
   }
 }
