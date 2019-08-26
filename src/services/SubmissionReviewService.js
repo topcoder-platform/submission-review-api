@@ -175,7 +175,7 @@ async function getSubmissionReviews (currentUser, submissionId) {
       throw new errors.ForbiddenError('You cannot view other member reviews before Appeals Response closure')
     }
     // Allow access to review of own submission
-    if (challenge.isAppealsPhase || challenge.appealEnded) {
+    if (challenge.isAppealsPhase || challenge.appealEnded || challenge.isMM) {
       return submission
     }
     // Return own submission details without Review
