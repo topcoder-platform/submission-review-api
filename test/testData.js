@@ -1191,7 +1191,8 @@ const clientManager = {
 const artifactsResponse = {
   'artifacts': [
     'ab3c915c-ad3e-4daa-9aa3-e3685abc22c3',
-    'ab3c915c-ad3e-4daa-9aa3-e3685abc22b4'
+    'ab3c915c-ad3e-4daa-9aa3-e3685abc22b4',
+    '5rec915c-ad3e-4daa-9far-e38u5abc22b4-internal'
   ]
 }
 
