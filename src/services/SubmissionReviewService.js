@@ -240,6 +240,10 @@ async function getDownloadUrl (currentUser, submissionId) {
   if (hasFullAccess) return url
 
   if (isSubmitter) {
+    if (challenge.isMM && submission.memberId.toString() !== currentUser.userId.toString()) {
+      throw new errors.ForbiddenError('You are not allowed to download this submission')
+    }
+
     if (challenge.appealResponseEnded || submission.memberId.toString() === currentUser.userId.toString()) {
       return url
     }

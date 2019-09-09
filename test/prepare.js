@@ -18,6 +18,7 @@ const { noResourceChallengeId,
   appealsPhaseChallengeId,
   completedChallengeId,
   f2fChallengeId,
+  mmChallengeId,
   reviewTypes,
   resourcesResponse,
   submissionPhaseChallengeResponse,
@@ -25,11 +26,13 @@ const { noResourceChallengeId,
   appealsPhaseChallengeResponse,
   completedChallengeResponse,
   f2fChallengeResponse,
+  mmChallengeResponse,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
   f2fSubmissions,
+  mmSubmissions,
   invalidChallengeIdSubmission,
   noResourceChallengeIdSubmission,
   artifactsResponse } = require('./testData')
@@ -54,6 +57,10 @@ prepare(function (done) {
 
       if (path.indexOf('submissions?challengeId=') !== -1 && path.indexOf(f2fChallengeId) !== -1) {
         return 'f2fSubmissions'
+      }
+
+      if (path.indexOf('submissions?challengeId=') !== -1 && path.indexOf(mmChallengeId) !== -1) {
+        return 'mmSubmissions'
       }
 
       if (path.indexOf('submissions?challengeId=') !== -1 && path.indexOf(noResourceChallengeId) === -1) {
@@ -92,12 +99,16 @@ prepare(function (done) {
     .reply(200, completedChallengeResponse)
     .get(f2fChallengeId)
     .reply(200, f2fChallengeResponse)
+    .get(mmChallengeId)
+    .reply(200, mmChallengeResponse)
     .get('noSubmissions')
     .reply(200, [])
     .get('subPhaseSubmissions')
     .reply(200, subPhaseSubmissions)
     .get('f2fSubmissions')
     .reply(200, f2fSubmissions)
+    .get('mmSubmissions')
+    .reply(200, mmSubmissions)
     .get(reviewTypesUrl.path)
     .reply(200, reviewTypes)
     .get(subPhaseSubmissions[0].id)
@@ -120,6 +131,8 @@ prepare(function (done) {
     .reply(200, invalidChallengeIdSubmission)
     .get(noResourceChallengeIdSubmission.id)
     .reply(200, noResourceChallengeIdSubmission)
+    .get(mmSubmissions[0].id)
+    .reply(200, mmSubmissions[0])
     .get('download')
     .reply(200, 'download')
     .get('artifacts')

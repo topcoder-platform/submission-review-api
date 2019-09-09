@@ -18,6 +18,7 @@ const { invalidChallengeId,
   admin,
   submitter1,
   submitter3,
+  mmSubmitter,
   nonSubmitter,
   observer,
   manager,
@@ -28,6 +29,7 @@ const { invalidChallengeId,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
+  mmSubmissions,
   artifactsResponse } = require('../testData')
 
 chai.should()
@@ -281,6 +283,10 @@ describe('Artifact Service tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Submitter should not have access to other submission artifacts after appeals response closure if the challenge is MM', async () => {
+        return service.getSubmissionArtifacts(mmSubmitter, mmSubmissions[0].id).should.be.rejectedWith(`You don't have access to this challenge!`)
+      })
+
       it('Reviewer will have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(reviewer, completedChallengeSubmissions[0].id)
         submission.artifacts.length.should.be.eql(2)
@@ -460,6 +466,10 @@ describe('Artifact Service tests', () => {
 
       it('Submitter will have access to other submission after appeals response closure', async () => {
         return service.getArtifactDownloadUrl(submitter3, completedChallengeSubmissions[0].id, artifactsResponse.artifacts[0]).should.be.fulfilled
+      })
+
+      it('Submitter should not have access to other submission after appeals response closure if the challenge is MM', async () => {
+        return service.getArtifactDownloadUrl(mmSubmitter, mmSubmissions[0].id, artifactsResponse.artifacts[0]).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
 
       it('Reviewer will have access to all submission after appeals response closure', async () => {

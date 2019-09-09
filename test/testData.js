@@ -10,6 +10,7 @@ const reviewPhaseChallengeId = 30049361
 const appealsPhaseChallengeId = 30049362
 const completedChallengeId = 30049363
 const f2fChallengeId = 30049364
+const mmChallengeId = 30101700
 
 const resourcesResponse = {
   'id': '-7afbdf6f:168c51fa14f:-7a2e',
@@ -181,8 +182,25 @@ const resourcesResponse = {
         'createdAt': '2015-10-29T00:38:21.000Z',
         'createdBy': '151741',
         'updatedBy': '8547899'
+      },
+      {
+        'id': 1517412,
+        'projectId': 30049360,
+        'name': null,
+        'role': 'submitter',
+        'phaseId': null,
+        'submissions': [],
+        'properties': {
+          'Registration Date': '10.28.2015 04:37 PM',
+          'External Reference ID': '151741',
+          'Appeals Completed Early': 'NO',
+          'Handle': 'crazyk'
+        },
+        'updatedAt': '2019-03-05T13:16:39.070Z',
+        'createdAt': '2015-10-29T00:38:21.000Z',
+        'createdBy': '151741',
+        'updatedBy': '8547899'
       }
-
     ]
   },
   'version': 'v3'
@@ -658,6 +676,84 @@ const f2fChallengeResponse = {
   'version': 'v3'
 }
 
+const mmChallengeResponse = {
+  'id': '-2e28b0da:1692713635f:-3c2',
+  'result': {
+    'success': true,
+    'status': 200,
+    'metadata': null,
+    'content': {
+      'subTrack': 'DEVELOP_MARATHON_MATCH',
+      'challengeTitle': 'TCO19 Marathon Match Round 2 - Testing',
+      'challengeId': mmChallengeId,
+      'projectId': 17234,
+      'forumId': 77872,
+      'detailedRequirements': 'Testing Testing',
+      'screeningScorecardId': null,
+      'reviewScorecardId': '30001031',
+      'numberOfCheckpointsPrizes': 0,
+      'postingDate': '2019-09-09T07:14:07.580Z',
+      'registrationEndDate': '2019-09-09T15:40:56.228Z',
+      'checkpointSubmissionEndDate': null,
+      'submissionEndDate': '2019-09-16T12:24:00.000Z',
+      'reviewType': 'COMMUNITY',
+      'environment': null,
+      'codeRepo': null,
+      'forumLink': 'https://apps.topcoder.com/forums/?module=Category&categoryID=77872',
+      'appealsEndDate': '2019-09-18T12:24:00.000Z',
+      'finalFixEndDate': null,
+      'currentStatus': 'Active',
+      'digitalRunPoints': null,
+      'challengeCommunity': 'develop',
+      'directUrl': 'https://www.topcoder.com/direct/contest/detail.action?projectId=30101700',
+      'technology': [],
+      'prize': [
+        0, 0
+      ],
+      'currentPhaseName': 'Submission',
+      'currentPhaseRemainingTime': 592240,
+      'currentPhaseEndDate': '2019-09-16T12:24:00.000Z',
+      'platforms': [],
+      'phases': [
+        {
+          'actualEndTime': '2019-09-09T15:40:56.228Z',
+          'actualStartTime': '2019-09-09T07:14:07.580Z',
+          'duration': 240000,
+          'fixedStartTime': '2019-09-09T05:00:00.000Z',
+          'phaseId': 1169267,
+          'scheduledEndTime': '2019-09-09T15:40:56.228Z',
+          'scheduledStartTime': '2019-09-09T07:14:07.580Z',
+          'status': 'Closed',
+          'type': 'Registration'
+        },
+        {
+          'actualStartTime': '2019-09-09T07:29:29.706Z',
+          'duration': 622500000,
+          'phaseId': 1169268,
+          'scheduledEndTime': '2019-09-16T12:24:00.000Z',
+          'scheduledStartTime': '2019-09-09T07:29:29.706Z',
+          'status': 'Open',
+          'type': 'Submission'
+        },
+        {
+          'duration': 172800000,
+          'phaseId': 1169269,
+          'scheduledEndTime': '2019-09-18T12:24:00.000Z',
+          'scheduledStartTime': '2019-09-16T12:24:00.000Z',
+          'status': 'Scheduled',
+          'type': 'Review'
+        }
+      ],
+      'submissions': [],
+      'checkpoints': [],
+      'numberOfRegistrants': 9,
+      'numberOfSubmissions': 4,
+      'numberOfCheckpointSubmissions': 0
+    }
+  },
+  'version': 'v3'
+}
+
 const subPhaseSubmissions = [
   {
     'challengeId': submissionPhaseChallengeId,
@@ -971,6 +1067,65 @@ const f2fSubmissions = [
   }
 ]
 
+const mmSubmissions = [
+  {
+    'challengeId': mmChallengeId,
+    'updatedBy': 'Sharathkumar92',
+    'createdBy': 'Sharathkumar92',
+    'created': '2018-08-22T19:58:48.839Z',
+    'submissionPhaseId': 747596,
+    'legacySubmissionId': 509262,
+    'id': '8f52cdab-5a6d-41f7-a57c-d3e1a430bd7e',
+    'type': 'Contest Submission',
+    'updated': '2018-08-22T19:58:48.839Z',
+    'fileType': 'zip',
+    'url': 'https://topcoder-dev-submissions-dmz.s3.amazonaws.com/dfa95c6e-efe8-4439-a6ab-d197e906bc6d',
+    'memberId': 10336829,
+    'review': [
+      {
+        'score': 0,
+        'updatedBy': 'enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients',
+        'reviewerId': 22713337,
+        'submissionId': 'dfa95c6e-efe8-4439-a6ab-d197e906bc6d',
+        'createdBy': 'enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients',
+        'created': '2019-02-26T22:11:29.842Z',
+        'scoreCardId': 30001852,
+        'typeId': 'c56a4180-65aa-42ec-a945-5fd21dec0503',
+        'id': 'e0f12278-266e-4fbe-bdc1-31685f2d3711',
+        'updated': '2019-02-26T22:12:47.251Z'
+      }
+    ]
+  },
+  {
+    'challengeId': mmChallengeId,
+    'updatedBy': 'Sharathkumar92',
+    'createdBy': 'Sharathkumar92',
+    'created': '2018-08-22T19:58:48.839Z',
+    'submissionPhaseId': 747596,
+    'legacySubmissionId': 509262,
+    'id': '8f52cdab-5a6d-41f7-a57c-d3e1a430bd7e',
+    'type': 'Contest Submission',
+    'updated': '2018-08-22T19:58:48.839Z',
+    'fileType': 'zip',
+    'url': 'https://topcoder-dev-submissions-dmz.s3.amazonaws.com/dfa95c6e-efe8-4439-a6ab-d197e906bc6d',
+    'memberId': 103829,
+    'review': [
+      {
+        'score': 0,
+        'updatedBy': 'enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients',
+        'reviewerId': 22713337,
+        'submissionId': 'dfa95c6e-efe8-4439-a6ab-d197e906bc6d',
+        'createdBy': 'enjw1810eDz3XTwSO2Rn2Y9cQTrspn3B@clients',
+        'created': '2019-02-26T22:11:29.842Z',
+        'scoreCardId': 30001852,
+        'typeId': 'c56a4180-65aa-42ec-a945-5fd21dec0503',
+        'id': 'e0f12278-266e-4fbe-bdc1-31685f2d3711',
+        'updated': '2019-02-26T22:12:47.251Z'
+      }
+    ]
+  }
+]
+
 const invalidChallengeIdSubmission = {
   'challengeId': invalidChallengeId,
   'updatedBy': 'tester',
@@ -1098,6 +1253,21 @@ const submitter3 = {
   'jti': 'de3c915c-ad3e-4daa-9aa3-e3685abc22a1'
 }
 
+const mmSubmitterToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJUb3Bjb2RlciBVc2VyIl0sImlzcyI6Imh0dHBzOi8vYXBpLnRvcGNvZGVyLmNvbSIsImhhbmRsZSI6ImNyYXp5ayIsImV4cCI6MTk1MjAyNDE1OSwidXNlcklkIjoiMTUxNzQxIiwiaWF0IjoxNTUyMDIzNTU5LCJlbWFpbCI6ImNyYXp5a0B0b3Bjb2Rlci5jb20iLCJqdGkiOiJkZTNjOTE1Yy1hZDNlLTRkYWEtOWFhMy1lMzY4NWFiYzIyYTEifQ.2PJSZa3leaxMPDVkvLfgJMlphEXH_S85Uj-Xom9DtsY'
+
+const mmSubmitter = {
+  'roles': [
+    'Topcoder User'
+  ],
+  'iss': 'https://api.topcoder.com',
+  'handle': 'ssSubmitter',
+  'exp': 1952024159,
+  'userId': '1517412',
+  'iat': 1552023559,
+  'email': 'crazyk@topcoder.com',
+  'jti': 'de3c915c-ad3e-4daa-9aa3-e3685abc22a1'
+}
+
 const nonSubmitterToken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJUb3Bjb2RlciBVc2VyIl0sImlzcyI6Imh0dHBzOi8vYXBpLnRvcGNvZGVyLmNvbSIsImhhbmRsZSI6InNreWhpdCIsImV4cCI6MTk1MjAyNDE1OSwidXNlcklkIjoiNjMyMTE0NCIsImlhdCI6MTU1MjAyMzU1OSwiZW1haWwiOiJza3loaXRAdG9wY29kZXIuY29tIiwianRpIjoiZGUzYzkxNWMtYWQzZS00ZGFhLTlhYTMtZTM2ODVhYmMyMmExIn0.qgsZrod_1TvPvYn3Nckc4Y_iwlxf-fV22HNAG3n5h2U'
 
 const nonSubmitter = {
@@ -1207,17 +1377,20 @@ module.exports = {
   appealsPhaseChallengeId,
   completedChallengeId,
   f2fChallengeId,
+  mmChallengeId,
   resourcesResponse,
   submissionPhaseChallengeResponse,
   reviewPhaseChallengeResponse,
   appealsPhaseChallengeResponse,
   completedChallengeResponse,
   f2fChallengeResponse,
+  mmChallengeResponse,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
   f2fSubmissions,
+  mmSubmissions,
   reviewTypes,
   adminToken,
   admin,
@@ -1227,6 +1400,8 @@ module.exports = {
   submitter2,
   submitter3Token,
   submitter3,
+  mmSubmitterToken,
+  mmSubmitter,
   nonSubmitterToken,
   nonSubmitter,
   observerToken,

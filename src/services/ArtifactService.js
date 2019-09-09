@@ -77,12 +77,22 @@ async function getSubmissionArtifacts (currentUser, submissionId) {
   // Check access and retrieve submission
   let submission = await _checkAccess(currentUser, submissionId)
   let resources
+  let challenge
   try {
     resources = await getChallengeResources(submission.challengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
-  const { hasFullAccess } = getAccess(currentUser, resources)
+  try {
+    challenge = await getChallengeDetail(submission.challengeId)
+  } catch (e) {
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+  }
+  const { hasFullAccess, isSubmitter } = getAccess(currentUser, resources)
+
+  if (isSubmitter && challenge.isMM && submission.memberId.toString() !== currentUser.userId.toString()) {
+    throw new errors.ForbiddenError('You are not allowed to access this submission artifact.')
+  }
 
   try {
     // Reviews need not be part of this end point response
@@ -111,12 +121,22 @@ async function getArtifactDownloadUrl (currentUser, submissionId, artifactId) {
   // Check user acess
   let submission = await _checkAccess(currentUser, submissionId)
   let resources
+  let challenge
   try {
     resources = await getChallengeResources(submission.challengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
-  const { hasFullAccess } = getAccess(currentUser, resources)
+  try {
+    challenge = await getChallengeDetail(submission.challengeId)
+  } catch (e) {
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+  }
+  const { hasFullAccess, isSubmitter } = getAccess(currentUser, resources)
+
+  if (isSubmitter && challenge.isMM && submission.memberId.toString() !== currentUser.userId.toString()) {
+    throw new errors.ForbiddenError('You are not allowed to download this submission artifact.')
+  }
 
   if ((artifactId.includes('internal') && hasFullAccess) || !artifactId.includes('internal')) {
     return `${config.SUBMISSION_API_URL}/${submissionId}/artifacts/${artifactId}/download` // Artifact download URL
