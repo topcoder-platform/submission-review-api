@@ -18,6 +18,7 @@ const { invalidChallengeId,
   admin,
   submitter1,
   submitter3,
+  mmSubmitter,
   nonSubmitter,
   observer,
   manager,
@@ -28,6 +29,7 @@ const { invalidChallengeId,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
+  mmSubmissions,
   artifactsResponse } = require('../testData')
 
 chai.should()
@@ -83,31 +85,31 @@ describe('Artifact Service tests', () => {
     describe('Tests related to submission phase checks', () => {
       it('Admin have access to all submission artifacts during submission phase', async () => {
         const submission = await service.getSubmissionArtifacts(admin, subPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Observer have access to all submission artifacts during submission phase', async () => {
         const submission = await service.getSubmissionArtifacts(observer, subPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Manager have access to all submission artifacts during submission phase', async () => {
         const submission = await service.getSubmissionArtifacts(manager, subPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Copilot have access to all submission artifacts during submission phase', async () => {
         const submission = await service.getSubmissionArtifacts(copilot, subPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Client Manager have access to all submission artifacts during submission phase', async () => {
         const submission = await service.getSubmissionArtifacts(clientManager, subPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -133,31 +135,31 @@ describe('Artifact Service tests', () => {
     describe('Tests related to review phase checks', () => {
       it('Admin have access to all submission artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(admin, reviewPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Observer have access to all submission artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(observer, reviewPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Manager have access to all submission artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(manager, reviewPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Copilot have access to all submission artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(copilot, reviewPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Client Manager have access to all submission artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(clientManager, reviewPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -175,7 +177,7 @@ describe('Artifact Service tests', () => {
         return service.getSubmissionArtifacts(submitter3, reviewPhaseSubmissions[0].id).should.be.rejectedWith('You are not allowed to download artifacts of this submission')
       })
 
-      it('Reviewer will have access to all submission artifacts during review phase', async () => {
+      it('Reviewer will have access to all submission artifacts other than internal artifacts during review phase', async () => {
         const submission = await service.getSubmissionArtifacts(reviewer, reviewPhaseSubmissions[0].id)
         submission.artifacts.length.should.be.eql(2)
         errorLogs.should.be.empty
@@ -185,31 +187,31 @@ describe('Artifact Service tests', () => {
     describe('Tests related to appeals phase checks', () => {
       it('Admin have access to all submission artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(admin, appealsPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Observer have access to all submission artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(observer, appealsPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Manager have access to all submission artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(manager, appealsPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Copilot have access to all submission artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(copilot, appealsPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Client Manager have access to all submission artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(clientManager, appealsPhaseSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -227,7 +229,7 @@ describe('Artifact Service tests', () => {
         return service.getSubmissionArtifacts(submitter3, appealsPhaseSubmissions[0].id).should.be.rejectedWith('You are not allowed to download artifacts of this submission')
       })
 
-      it('Reviewer will have access to all submission artifacts during appeals phase', async () => {
+      it('Reviewer will have access to all submission artifacts other than internal artifacts during appeals phase', async () => {
         const submission = await service.getSubmissionArtifacts(reviewer, appealsPhaseSubmissions[0].id)
         submission.artifacts.length.should.be.eql(2)
         errorLogs.should.be.empty
@@ -237,31 +239,31 @@ describe('Artifact Service tests', () => {
     describe('Tests related to appeals response closure checks', () => {
       it('Admin have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(admin, completedChallengeSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Observer have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(observer, completedChallengeSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Manager have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(manager, completedChallengeSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Copilot have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(copilot, completedChallengeSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
       it('Client Manager have access to all submission artifacts after appeals response closure', async () => {
         const submission = await service.getSubmissionArtifacts(clientManager, completedChallengeSubmissions[0].id)
-        submission.artifacts.length.should.be.eql(2)
+        submission.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -279,6 +281,10 @@ describe('Artifact Service tests', () => {
         const submission = await service.getSubmissionArtifacts(submitter3, completedChallengeSubmissions[0].id)
         submission.artifacts.length.should.be.eql(2)
         errorLogs.should.be.empty
+      })
+
+      it('Submitter should not have access to other submission artifacts after appeals response closure if the challenge is MM', async () => {
+        return service.getSubmissionArtifacts(mmSubmitter, mmSubmissions[0].id).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
 
       it('Reviewer will have access to all submission artifacts after appeals response closure', async () => {
@@ -460,6 +466,10 @@ describe('Artifact Service tests', () => {
 
       it('Submitter will have access to other submission after appeals response closure', async () => {
         return service.getArtifactDownloadUrl(submitter3, completedChallengeSubmissions[0].id, artifactsResponse.artifacts[0]).should.be.fulfilled
+      })
+
+      it('Submitter should not have access to other submission after appeals response closure if the challenge is MM', async () => {
+        return service.getArtifactDownloadUrl(mmSubmitter, mmSubmissions[0].id, artifactsResponse.artifacts[0]).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
 
       it('Reviewer will have access to all submission after appeals response closure', async () => {

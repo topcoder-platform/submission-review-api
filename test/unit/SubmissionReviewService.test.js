@@ -26,6 +26,7 @@ const { invalidChallengeId,
   submitter1,
   submitter2,
   submitter3,
+  mmSubmitter,
   nonSubmitter,
   observer,
   manager,
@@ -35,6 +36,7 @@ const { invalidChallengeId,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
+  mmSubmissions,
   completedChallengeSubmissions } = require('../testData')
 
 chai.should()
@@ -706,6 +708,10 @@ describe('Submission Review Service tests', () => {
 
       it('Submitter will have access to other submission after appeals response closure', async () => {
         return service.getDownloadUrl(submitter3, completedChallengeSubmissions[0].id).should.be.fulfilled
+      })
+
+      it('Submitter should not have access to other submission after appeals response closure if the challenge is MM', async () => {
+        return service.getDownloadUrl(mmSubmitter, mmSubmissions[1].id).should.be.rejectedWith(`You don't have access to this challenge!`)
       })
 
       it('Reviewer will have access to all submission after appeals response closure', async () => {

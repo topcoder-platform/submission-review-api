@@ -35,12 +35,14 @@ const { invalidChallengeId,
   managerToken,
   copilotToken,
   reviewerToken,
+  mmSubmitterToken,
   reviewer,
   clientManagerToken,
   subPhaseSubmissions,
   reviewPhaseSubmissions,
   appealsPhaseSubmissions,
   completedChallengeSubmissions,
+  mmSubmissions,
   artifactsResponse } = require('../testData')
 
 describe('Submission Review API tests', () => {
@@ -1134,6 +1136,14 @@ describe('Submission Review API tests', () => {
         errorLogs.should.be.empty
       })
 
+      it('Submitter should not have access to other submissions after appeals response closure if MM', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${mmSubmissions[1].id}/download`)
+          .set('Authorization', `Bearer ${mmSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.text.should.be.contain('You are not allowed to download this submission')
+      })
+
       it('Registered User with no submission will have access to all submissions after appeals response closure', async () => {
         const response = await chai.request(app)
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/download`)
@@ -1206,7 +1216,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1215,7 +1225,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${observerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1224,7 +1234,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${managerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1233,7 +1243,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${copilotToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1242,7 +1252,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${subPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1286,7 +1296,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1295,7 +1305,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${observerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1304,7 +1314,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${managerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1313,7 +1323,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${copilotToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1322,7 +1332,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${reviewPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1366,7 +1376,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1375,7 +1385,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${observerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1384,7 +1394,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${managerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1393,7 +1403,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${copilotToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1402,7 +1412,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${appealsPhaseSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1446,7 +1456,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${adminToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1455,7 +1465,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${observerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1464,7 +1474,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${managerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1473,7 +1483,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${copilotToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1482,7 +1492,7 @@ describe('Submission Review API tests', () => {
           .get(`/challengeSubmissions/${completedChallengeSubmissions[0].id}/artifacts`)
           .set('Authorization', `Bearer ${clientManagerToken}`)
         response.status.should.be.eql(200)
-        response.body.artifacts.length.should.be.eql(2)
+        response.body.artifacts.length.should.be.eql(3)
         errorLogs.should.be.empty
       })
 
@@ -1501,6 +1511,14 @@ describe('Submission Review API tests', () => {
         response.status.should.be.eql(200)
         response.body.artifacts.length.should.be.eql(2)
         errorLogs.should.be.empty
+      })
+
+      it('Submitter should not have access to other submissions after appeals response closure if MM', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${mmSubmissions[1].id}/artifacts`)
+          .set('Authorization', `Bearer ${mmSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.text.should.be.contain('You are not allowed to download artifacts of this submission')
       })
 
       it('Registered User with no submission will have access to all submissions after appeals response closure', async () => {
@@ -1870,6 +1888,14 @@ describe('Submission Review API tests', () => {
         response.status.should.be.eql(200)
         response.text.should.be.eql('download')
         errorLogs.should.be.empty
+      })
+
+      it('Submitter should not have access to other submissions after appeals response closure if MM', async () => {
+        const response = await chai.request(app)
+          .get(`/challengeSubmissions/${mmSubmissions[1].id}/artifacts/${artifactsResponse.artifacts[0]}/download`)
+          .set('Authorization', `Bearer ${mmSubmitterToken}`)
+        response.status.should.be.eql(403)
+        response.text.should.be.contain('You are not allowed to download artifacts of this submission')
       })
 
       it('Registered User with no submission will have access to all submissions after appeals response closure', async () => {
