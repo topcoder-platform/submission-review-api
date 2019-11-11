@@ -16,7 +16,7 @@ const ProjectRoles = {
 }
 
 const xHeaders = {
-  maxPerPage: 100,
+  maxPerPage: 500,
   xTotalPages: 'x-total-pages'
 }
 
