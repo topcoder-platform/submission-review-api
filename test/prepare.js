@@ -6,7 +6,7 @@
 process.env.NODE_ENV = 'test'
 
 require('../app-bootstrap')
-const { xHeaders} = require('../app-constants')
+const { xHeaders } = require('../app-constants')
 
 const config = require('config')
 const nock = require('nock')
