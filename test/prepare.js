@@ -6,6 +6,7 @@
 process.env.NODE_ENV = 'test'
 
 require('../app-bootstrap')
+const { xHeaders} = require('../app-constants')
 
 const config = require('config')
 const nock = require('nock')
@@ -40,7 +41,7 @@ const { noResourceChallengeId,
 prepare(function (done) {
   // Mock Posting to Bus API and ES interactions
   const authUrl = URL.parse(config.M2M.AUTH0_URL)
-  const reviewTypesUrl = URL.parse(`${config.REVIEW_TYPE_API_URL}?&page=1&perPage=100`)
+  const reviewTypesUrl = URL.parse(`${config.REVIEW_TYPE_API_URL}?&page=1&perPage=${xHeaders.maxPerPage}`)
 
   nock(/.com/)
     .persist()
