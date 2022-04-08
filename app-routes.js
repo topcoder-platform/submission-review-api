@@ -53,6 +53,19 @@ module.exports = (app) => {
         })
       }
 
+      if (def.blockByIp) {
+        actions.push((req, res, next) => {
+          req.authUser.blockIP = _.find(req.authUser, (value, key) => {
+            return (key.indexOf('blockIP') !== -1)
+          })
+          if (req.authUser.blockIP) {
+            throw new errors.ForbiddenError('Access denied')
+          } else {
+            next()
+          }
+        })
+      }
+
       actions.push(method)
       console.log(path)
       app[verb](path, helper.autoWrapExpress(actions))
