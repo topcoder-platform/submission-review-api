@@ -7,35 +7,40 @@ module.exports = {
     get: {
       controller: 'SubmissionReviewController',
       method: 'getChallengeSubmissions',
-      auth: 'jwt'
+      auth: 'jwt',
+      blockByIp: true
     }
   },
   '/challengeSubmissions/:submissionId/reviews': {
     get: {
       controller: 'SubmissionReviewController',
       method: 'getSubmissionReviews',
-      auth: 'jwt'
+      auth: 'jwt',
+      blockByIp: true
     }
   },
   '/challengeSubmissions/:submissionId/download': {
     get: {
       controller: 'SubmissionReviewController',
       method: 'downloadSubmission',
-      auth: 'jwt'
+      auth: 'jwt',
+      blockByIp: true
     }
   },
   '/challengeSubmissions/:submissionId/artifacts': {
     get: {
       controller: 'ArtifactController',
       method: 'getSubmissionArtifacts',
-      auth: 'jwt'
+      auth: 'jwt',
+      blockByIp: true
     }
   },
   '/challengeSubmissions/:submissionId/artifacts/:artifactId/download': {
     get: {
       controller: 'ArtifactController',
       method: 'downloadArtifact',
-      auth: 'jwt'
+      auth: 'jwt',
+      blockByIp: true
     }
   }
 }
