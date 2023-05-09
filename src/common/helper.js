@@ -136,7 +136,7 @@ const getChallengeDetail = async (challengeId) => {
   return {
     isMM: body.trackId === config.MM_TRACK_ID,
     isF2F: body.typeId === config.F2F_TYPE_ID,
-    isReviewPhase:_.get(_.find(body.phases, p => p.name === 'Review' || (p.name === 'Iterative Review' && p.isOpen)), 'isOpen', false),
+    isReviewPhase: _.get(_.find(body.phases, p => p.name === 'Review' || (p.name === 'Iterative Review' && p.isOpen)), 'isOpen', false),
     winF2F: _.get(body, 'winners', []).length > 0 ? body.winners[0] : null,
     isSubmitPhase: _.get(_.find(body.phases, p => p.name === 'Submission'), 'isOpen', false),
     isAppealsPhase: _.get(_.find(body.phases, p => p.name === 'Appeals'), 'isOpen', false),
