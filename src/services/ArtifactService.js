@@ -33,12 +33,12 @@ async function _checkAccess (currentUser, submissionId) {
     throw new errors.NotFoundError(`Could not load submission.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    challenge = await getChallengeDetail(submission.challengeId)
+    challenge = await getChallengeDetail(submission.v5ChallengeId)
   } catch (e) {
-    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.v5ChallengeId}.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    resources = await getChallengeResources(submission.challengeId)
+    resources = await getChallengeResources(submission.v5ChallengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
@@ -79,14 +79,14 @@ async function getSubmissionArtifacts (currentUser, submissionId) {
   let resources
   let challenge
   try {
-    resources = await getChallengeResources(submission.challengeId)
+    resources = await getChallengeResources(submission.v5ChallengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    challenge = await getChallengeDetail(submission.challengeId)
+    challenge = await getChallengeDetail(submission.v5ChallengeId)
   } catch (e) {
-    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.v5ChallengeId}.\n Details: ${_.get(e, 'message')}`)
   }
   const { hasFullAccess, isSubmitter } = getAccess(currentUser, resources)
 
@@ -123,14 +123,14 @@ async function getArtifactDownloadUrl (currentUser, submissionId, artifactId) {
   let resources
   let challenge
   try {
-    resources = await getChallengeResources(submission.challengeId)
+    resources = await getChallengeResources(submission.v5ChallengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    challenge = await getChallengeDetail(submission.challengeId)
+    challenge = await getChallengeDetail(submission.v5ChallengeId)
   } catch (e) {
-    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.v5ChallengeId}.\n Details: ${_.get(e, 'message')}`)
   }
   const { hasFullAccess, isSubmitter } = getAccess(currentUser, resources)
 
