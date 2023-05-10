@@ -131,7 +131,14 @@ const fetchPaginated = async (path) => {
  * @returns {Object} the challenge details
  */
 const getChallengeDetail = async (challengeId) => {
-  const { body } = await makeRequest('GET', `${config.CHALLENGE_API_URL}/${challengeId}`)
+  // check if challengeId is a uuid
+  let url = `${config.CHALLENGE_API_URL}/${challengeId}`
+  const isUUID = challengeId.match(/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i)
+  if (!isUUID) {
+    url = `${config.CHALLENGE_API_URL}?legacyId=${challengeId}`
+  }
+  const { body: res } = await makeRequest('GET', url)
+  const body = isUUID ? res : res[0]
 
   return {
     isMM: body.trackId === config.MM_TRACK_ID,
