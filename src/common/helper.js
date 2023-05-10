@@ -133,7 +133,7 @@ const fetchPaginated = async (path) => {
 const getChallengeDetail = async (challengeId) => {
   // check if challengeId is a uuid
   let url = `${config.CHALLENGE_API_URL}/${challengeId}`
-  const isUUID = challengeId.match(/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i)
+  const isUUID = `${challengeId}`.match(/^[a-f\d]{8}(-[a-f\d]{4}){4}[a-f\d]{8}$/i)
   if (!isUUID) {
     url = `${config.CHALLENGE_API_URL}?legacyId=${challengeId}`
   }
