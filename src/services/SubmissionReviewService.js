@@ -29,6 +29,11 @@ async function getChallengeSubmissions (currentUser, challengeId) {
 
   try {
     challenge = await getChallengeDetail(challengeId)
+    if (challenge ==  null) {
+      throw new Error(`Challenge with id: ${challengeId} not found`)
+    }
+
+    challengeId = challenge.id;
   } catch (e) {
     logger.error(e)
     throw new errors.NotFoundError(`Could not load challenge: ${challengeId}.\n Details: ${_.get(e, 'message')}`)
@@ -138,12 +143,12 @@ async function getSubmissionReviews (currentUser, submissionId) {
     throw new errors.NotFoundError(`Could not load submission.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    challenge = await getChallengeDetail(submission.challengeId)
+    challenge = await getChallengeDetail(submission.v5ChallengeId)
   } catch (e) {
-    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.v5ChallengeId}.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    resources = await getChallengeResources(submission.challengeId)
+    resources = await getChallengeResources(submission.v5ChallengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
@@ -217,12 +222,12 @@ async function getDownloadUrl (currentUser, submissionId) {
     throw new errors.NotFoundError(`Could not load submission.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    challenge = await getChallengeDetail(submission.challengeId)
+    challenge = await getChallengeDetail(submission.v5ChallengeId)
   } catch (e) {
-    throw new errors.NotFoundError(`Could not load challenge: ${submission.challengeId}.\n Details: ${_.get(e, 'message')}`)
+    throw new errors.NotFoundError(`Could not load challenge: ${submission.v5ChallengeId}.\n Details: ${_.get(e, 'message')}`)
   }
   try {
-    resources = await getChallengeResources(submission.challengeId)
+    resources = await getChallengeResources(submission.v5ChallengeId)
   } catch (e) {
     throw new errors.NotFoundError(`Could not load challenge resources.\n Details: ${_.get(e, 'message')}`)
   }
