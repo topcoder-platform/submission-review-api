@@ -8,6 +8,7 @@ const request = require('superagent')
 const m2mAuth = require('tc-core-library-js').auth.m2m
 const { xHeaders, ProjectRoles, UserRoles } = require('../../app-constants')
 const logger = require('./logger')
+const moment = require('moment')
 
 const m2m = m2mAuth(_.pick(config.M2M, ['AUTH0_URL', 'AUTH0_AUDIENCE', 'TOKEN_CACHE_TIME']))
 
@@ -130,52 +131,28 @@ const fetchPaginated = async (path) => {
  * @returns {Object} the challenge details
  */
 const getChallengeDetail = async (challengeId) => {
-  const content = _.get(await makeRequest('GET', `${config.CHALLENGE_API_URL}/${challengeId}`), 'body.result.content')
-  const ret = {}
-
-  const phases = {}
-  _.each(content.phases, element => {
-    if (!phases[element.type]) {
-      phases[element.type] = element
-    } else {
-      // For F2F challenge, it has multiple iterative-review phases
-      if (_.isArray(phases[element.type])) {
-        phases[element.type].push(element)
-      } else {
-        phases[element.type] = [phases[element.type]]
-      }
-    }
-  })
-
-  ret.isMM = content.subTrack !== undefined && content.subTrack.endsWith('MARATHON_MATCH')
-  ret.isF2F = content.subTrack !== undefined && content.subTrack.endsWith('FIRST_2_FINISH')
-  if (ret.isF2F) {
-    // F2F has multiple iterative-review phases, no appeal/appeal-response phase
-    if (_.isArray(phases['Iterative Review'])) {
-      ret.isReviewPhase = phases['Iterative Review'][phases['Iterative Review'].length - 1].actualEndTime === undefined
-    } else {
-      ret.isReviewPhase = phases['Iterative Review'].actualEndTime === undefined
-    }
-    if (content.winners) {
-      ret.winF2F = content.winners[0].submitter
-    }
-  } else {
-    ret.isSubmitPhase = phases['Submission'].actualStartTime && phases['Submission'].actualEndTime === undefined
-    ret.isReviewPhase = phases['Review'].actualStartTime && phases['Review'].actualEndTime === undefined
-    ret.hasAppeal = phases['Appeals'] !== undefined
-    if (ret.hasAppeal) {
-      ret.isAppealsPhase = phases['Appeals'].actualStartTime && phases['Appeals'].actualEndTime === undefined
-      ret.appealEnded = phases['Appeals'].actualEndTime !== undefined
-      ret.appealResponseEnded = phases['Appeals Response'].actualEndTime !== undefined
-    }
-  }
-
-  ret.phases = phases
+  const { body } = await makeRequest('GET', `${config.CHALLENGE_API_URL}/${challengeId}`)
 
   return {
-    ...ret,
-    ..._.pick(content, ['track', 'subTrack'])
+    isMM: body.trackId === config.MM_TRACK_ID,
+    isF2F: body.typeId === config.F2F_TYPE_ID,
+    isReviewPhase: _.get(_.find(body.phases, p => p.name === 'Review' || (p.name === 'Iterative Review' && p.isOpen)), 'isOpen', false),
+    winF2F: _.get(body, 'winners', []).length > 0 ? body.winners[0] : null,
+    isSubmitPhase: _.get(_.find(body.phases, p => p.name === 'Submission'), 'isOpen', false),
+    isAppealsPhase: _.get(_.find(body.phases, p => p.name === 'Appeals'), 'isOpen', false),
+    appealEnded: moment(_.get(_.find(body.phases, p => p.name === 'Submission'), 'scheduledEndDate')).isBefore(),
+    appealResponseEnded: moment(_.get(_.find(body.phases, p => p.name === 'Appeals Response'), 'scheduledEndDate')).isBefore(),
+    track: body.track,
+    subTrack: body.type
   }
+}
+
+/**
+ * Get resource roles from API
+ */
+const getResourceRoles = async () => {
+  const { body } = await makeRequest('GET', config.RESOURCE_ROLES_API_URL)
+  return body
 }
 
 /**
@@ -183,17 +160,19 @@ const getChallengeDetail = async (challengeId) => {
  * @param {String} challengeId the challenge id
  */
 const getChallengeResources = async (challengeId) => {
-  const body = _.get(await makeRequest('GET', `${config.CHALLENGE_API_URL}/${challengeId}/resources`), 'body.result.content', [])
+  const resourceRoles = await getResourceRoles()
+  const { body } = await makeRequest('GET', `${config.RESOURCES_API_URL}?challengeId=${challengeId}`)
   const resources = {}
+
   _.each(body, (resource) => {
-    if (!resources[resource.properties['External Reference ID']]) {
-      resources[resource.properties['External Reference ID']] = {
-        memberId: resource.properties['External Reference ID'],
-        memberHandle: resource.properties['Handle'],
+    if (!resources[resource.memberId]) {
+      resources[resource.memberId] = {
+        memberId: resource.memberId,
+        memberHandle: resource.memberHandle,
         roles: []
       }
     }
-    resources[resource.properties['External Reference ID']].roles.push(resource.role)
+    resources[resource.memberId].roles.push(_.get(_.find(resourceRoles, r => r.id === resource.roleId), 'name'))
   })
   return resources
 }

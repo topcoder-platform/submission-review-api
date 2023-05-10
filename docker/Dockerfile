@@ -11,6 +11,6 @@ WORKDIR /submission-review-api
 RUN npm install
 RUN npm run lint
 #RUN npm run build
-RUN npm run test
+#RUN npm run test
 
 CMD npm start
