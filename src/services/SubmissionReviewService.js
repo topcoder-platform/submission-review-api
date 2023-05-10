@@ -29,11 +29,11 @@ async function getChallengeSubmissions (currentUser, challengeId) {
 
   try {
     challenge = await getChallengeDetail(challengeId)
-    if (challenge ==  null) {
+    if (challenge == null) {
       throw new Error(`Challenge with id: ${challengeId} not found`)
     }
 
-    challengeId = challenge.id;
+    challengeId = challenge.id
   } catch (e) {
     logger.error(e)
     throw new errors.NotFoundError(`Could not load challenge: ${challengeId}.\n Details: ${_.get(e, 'message')}`)
