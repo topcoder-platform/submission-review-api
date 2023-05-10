@@ -141,6 +141,7 @@ const getChallengeDetail = async (challengeId) => {
   const body = isUUID ? res : res[0]
 
   return {
+    id: body.id,
     isMM: body.trackId === config.MM_TRACK_ID,
     isF2F: body.typeId === config.F2F_TYPE_ID,
     isReviewPhase: _.get(_.find(body.phases, p => p.name === 'Review' || (p.name === 'Iterative Review' && p.isOpen)), 'isOpen', false),
