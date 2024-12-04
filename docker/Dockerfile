@@ -10,8 +10,6 @@ WORKDIR /submission-review-api
 # Install the dependencies from package.json
 RUN npm install
 RUN npm run lint
-#RUN npm run build
-#RUN npm run test
 
 #CMD npm start
 CMD [ "node", "app.js" ]
