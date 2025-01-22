@@ -1,5 +1,5 @@
 # Use the base image with Node.js
-FROM node:latest
+FROM node:11.15.0
 
 RUN useradd -m -s /bin/bash appuser
 
