@@ -93,4 +93,4 @@ Here is one of the example payload for v3 JWT using in DEV
   "jti": "f94d1e26-3d0e-46ca-8115-8754544a08f1"
 }
 ```
-- All JWT tokens provided in Postman environment file is created in JWT.IO with secret `mysecret`, same as default AUTH_SECRET value in `config/default.js` file.
+- All JWT tokens provided in Postman environment file is created in JWT.IO with secret `mysecret`, same as default AUTH_SECRET value in `config/default.js` file..
