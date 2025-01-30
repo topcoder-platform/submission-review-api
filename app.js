@@ -2,7 +2,6 @@
  * The application entry point
  */
 
-process.env.DEBUG = '*'
 require('./app-bootstrap')
 
 const config = require('config')
@@ -22,6 +21,10 @@ function check () {
   return true
 }
 
+app.use((req, res, next) => {
+  logger.info(`test ${req.url}`)
+  next()
+})
 app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
