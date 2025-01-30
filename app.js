@@ -2,6 +2,7 @@
  * The application entry point
  */
 
+process.env.DEBUG='*';
 require('./app-bootstrap')
 
 const config = require('config')
