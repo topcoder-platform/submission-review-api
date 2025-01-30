@@ -22,7 +22,10 @@ function check () {
 }
 
 app.use((req, res, next) => {
-  logger.info(`test ${req.url}`)
+  console.log(`url here: ${req.url}`)
+  logger.info(`url here: ${req.url}`)
+  console.warn(`url here: ${req.url}`)
+  logger.warn(`url here: ${req.url}`)
   next()
 })
 app.use(cors())
