@@ -26,6 +26,7 @@ module.exports = (app) => {
 
       const actions = []
       actions.push((req, res, next) => {
+        logger.info(`Ctrl signature: ${def.controller}#${def.method}`)
         req.signature = `${def.controller}#${def.method}`
         next()
       })
