@@ -4,6 +4,7 @@
 const service = require('../services/SubmissionReviewService')
 const { getM2Mtoken } = require('../common/helper')
 const request = require('superagent')
+const logger = require('../common/logger')
 
 /**
  * Get challenge submissions
@@ -31,6 +32,7 @@ async function getSubmissionReviews (req, res) {
  * @param res the response
  */
 async function downloadSubmission (req, res) {
+  logger.info(`downloadSubmission ${req.params.submissionId}`)
   const url = await service.getDownloadUrl(req.authUser, req.params.submissionId)
   res.set('Content-Disposition', `attachment; filename=submission-${req.params.submissionId}.zip`)
   const token = await getM2Mtoken()

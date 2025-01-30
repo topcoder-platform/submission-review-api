@@ -7,6 +7,7 @@ const HttpStatus = require('http-status-codes')
 const helper = require('./src/common/helper')
 const errors = require('./src/common/errors')
 const routes = require('./src/routes')
+const logger = require('./src/common/logger')
 const authenticator = require('tc-core-library-js').middleware.jwtAuthenticator
 
 /**
@@ -33,6 +34,7 @@ module.exports = (app) => {
       if (def.auth) {
         actions.push((req, res, next) => {
           if (_.get(req, 'query.token')) {
+            logger.info('query.token set')
             _.set(req, 'headers.authorization', `Bearer ${_.trim(req.query.token)}`)
           }
           next()
@@ -58,6 +60,8 @@ module.exports = (app) => {
           req.authUser.blockIP = _.find(req.authUser, (value, key) => {
             return (key.indexOf('blockIP') !== -1)
           })
+          logger.info(`blockIP: ${req.authUser.blockIP}`);
+
           if (req.authUser.blockIP) {
             throw new errors.ForbiddenError('Access denied')
           } else {

@@ -34,6 +34,7 @@ require('./app-routes')(app)
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
   logger.logFullError(err, req.signature || `${req.method} ${req.url}`)
+  logger.info('Error handler');
   const errorResponse = {}
   const status = err.isJoi ? HttpStatus.BAD_REQUEST : (err.status || err.httpStatus || HttpStatus.INTERNAL_SERVER_ERROR)
   if (_.isArray(err.details)) {
