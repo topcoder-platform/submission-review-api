@@ -60,7 +60,7 @@ module.exports = (app) => {
           req.authUser.blockIP = _.find(req.authUser, (value, key) => {
             return (key.indexOf('blockIP') !== -1)
           })
-          logger.info(`blockIP: ${req.authUser.blockIP}`);
+          logger.info(`blockIP: ${req.authUser.blockIP}`)
 
           if (req.authUser.blockIP) {
             throw new errors.ForbiddenError('Access denied')
