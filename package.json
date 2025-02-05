@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app.js",
     "lint": "standard",
-    "lint:fix": "standard --fix",
+    "lint:fix": "standard --fix"
   },
   "author": "TCSCODER",
   "license": "none",

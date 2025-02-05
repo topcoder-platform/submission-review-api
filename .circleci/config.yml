@@ -1,15 +1,13 @@
 version: 2
 defaults: &defaults
     docker:
-      - image:  cimg/python:3.11.0-browsers  
+      - image: cimg/python:3.11.11-browsers
 install_dependency: &install_dependency
   name: Installation of build and deployment dependencies.
   command: |
     sudo apt update
-    sudo apt install jq
-    sudo apt install python3-pip
+    sudo apt install -y jq python3-pip
     sudo pip3 install awscli --upgrade
-    sudo pip3 install docker-compose
 install_deploysuite: &install_deploysuite
   name: Installation of install_deploysuite.
   command: |
@@ -40,7 +38,7 @@ builddeploy_steps: &builddeploy_steps
             source awsenvconf
             ./buildenv.sh -e $DEPLOY_ENV -b ${DEPLOY_ENV}-${APPNAME}-deployvar
             source buildenvvar
-            ./master_deploy.sh -d ECS -e $DEPLOY_ENV -t latest -s ${DEPLOY_ENV}-global-appvar,${DEPLOY_ENV}-${APPNAME}-appvar -i ${APPNAME}
+            ./master_deploy.sh -d ECS -e $DEPLOY_ENV -t latest -s ${DEPLOY_ENV}-global-appvar,${DEPLOY_ENV}-${APPNAME}-appvar -i ${APPNAME} -p FARGATE
 
 
 jobs:
